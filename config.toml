@@ -128,5 +128,3 @@ keyPrefix = ""
 # Leave unset to use your default profile.
 # Default: (unset)
 # profile =
-
-streamlit run extraction_syno.py --server.port 80
