@@ -5,7 +5,7 @@ import numpy as np
 #st.cache_data
 
 def convert_df(df):
-    return df.to_csv().encode('utf-8')
+    return df.to_excel()
 
 st.title('EXTRACTION SYNOPTIQUE')
 
@@ -143,7 +143,7 @@ if uploaded_file is not None:
         st.download_button(
             label='Télécharger',
             data=csv,
-            file_name=index_df+'_out.csv',
+            file_name=index_df+'_out.xlsx',
             mime='text/csv'
         )
 
