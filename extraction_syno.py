@@ -36,7 +36,7 @@ if uploaded_file is not None:
 
         ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[^0-9+]',na=False)]
         for adresse in ADRESSE:
-            if ('RTSK-89' not in adresse)|('SI' not in adresse):
+            if ('RTSK-89' not in adresse):
                 ADRESSE_FINAL.append(adresse)
 
         ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
