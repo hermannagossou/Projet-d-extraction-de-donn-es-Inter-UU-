@@ -50,23 +50,23 @@ if uploaded_file is not None:
         EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT',na=False)]
 
         for index_epi in EPI.index:
-            if CHAINE[index_epi+1].startswith('ORF') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            if CHAINE[index_epi+1].startswith('ORF') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('BYT') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('BYT') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('NXL') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('NXL') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('OPE') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('OPE') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('COL') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('COL') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('Galerie') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('Galerie') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('BPE') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('BPE') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('BPP') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('BPP') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
-            elif CHAINE[index_epi+1].startswith('BPI') & type(CHAINE[index_epi+1].startswith('ORF'))!=float:
+            elif CHAINE[index_epi+1].startswith('BPI') & type(CHAINE[index_epi+1])!=float:
                 EPISSURE.append(CHAINE[index_epi])
 
         EPISSURE=pd.Series(EPISSURE)
