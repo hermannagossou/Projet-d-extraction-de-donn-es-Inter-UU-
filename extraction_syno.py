@@ -38,7 +38,9 @@ if uploaded_file is not None:
         for adresse in ADRESSE:
             if ('RTSK-89' not in adresse):
                 ADRESSE_FINAL.append(adresse)
-
+            elif ('SI' not in adresse):
+                ADRESSE_FINAL.append(adresse)
+                
         ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
 
         #TRAITEMENT DES EPISSURES
