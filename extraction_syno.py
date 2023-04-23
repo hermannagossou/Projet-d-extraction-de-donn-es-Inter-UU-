@@ -5,7 +5,7 @@ import numpy as np
 #st.cache_data
 
 def convert_df(df):
-    return df.to_csv()
+    return df.to_csv().encode('utf-8')
 
 st.title('EXTRACTION SYNOPTIQUE')
 
