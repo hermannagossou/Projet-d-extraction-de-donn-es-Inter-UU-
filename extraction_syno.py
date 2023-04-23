@@ -20,6 +20,7 @@ if uploaded_file is not None:
         #INITIALISATION DES VARIABLES
 
         ADRESSE_FINAL=[]
+        CAPACITE_FINAL=[]
         EPISSURE=[]
         LONGUEUR=[]
         CABLE=[]
@@ -105,7 +106,14 @@ if uploaded_file is not None:
         #TRAITEMENT DE LA CAPACITE
 
         CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
-        CAPACITE=CAPACITE.reset_index(drop=True)
+        
+        for capacite in CAPACITE:
+          if '\n' in capacite:
+            CAPACITE_FINAL.append(capacite.split('\n')[0].strip())
+          else:
+            CAPACITE_FINAL.append(capacite)
+
+        CAPACITE_FINAL=pd.Series(CAPACITE_FINAL)
 
         #TRAITEMENT DES CABLES
 
@@ -134,7 +142,7 @@ if uploaded_file is not None:
 
         LONGUEUR=pd.Series(LONGUEUR)
 
-        df_out=pd.concat([CABLE,CAPACITE,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,CHAMBRE,ADRESSE_FINAL],axis=1)
+        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,CHAMBRE,ADRESSE_FINAL],axis=1)
         df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'CHAMBRE',7:'ADRESSE'})
 
         st.subheader(index_df)
