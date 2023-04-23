@@ -60,6 +60,8 @@ if uploaded_file is not None:
                 EPISSURE.append(CHAINE[index_epi])
             elif CHAINE[index_epi+1].startswith('COL'):
                 EPISSURE.append(CHAINE[index_epi])
+            elif CHAINE[index_epi+1].startswith('Galerie'):
+                EPISSURE.append(CHAINE[index_epi])
             elif CHAINE[index_epi+1].startswith('BPE'):
                 EPISSURE.append(CHAINE[index_epi])
             elif CHAINE[index_epi+1].startswith('BPP'):
