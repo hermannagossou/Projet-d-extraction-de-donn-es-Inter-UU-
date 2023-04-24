@@ -48,7 +48,7 @@ if uploaded_file is not None:
 
         #TRAITEMENT DES EPISSURES
 
-        EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT',na=False)]
+        EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT|ADDUCTION',na=False)]
 
         for index_epi in EPI.index:
             if type(CHAINE[index_epi+1])!=float:
