@@ -89,7 +89,7 @@ if uploaded_file is not None:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif CHAINE[index_modele+1].endswith('T0')|CHAINE[index_modele+1].endswith('T0 '):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('T1')|CHAINE[index_modele+1].endswith('T1 '):
+            elif CHAINE[index_modele+1].endswith('T1')|CHAINE[index_modele+1].endswith('T1 ')|CHAINE[index_modele+1].endswith('T1 FDP'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif CHAINE[index_modele+1].endswith('Taille 0')|CHAINE[index_modele+1].endswith('Taille 0 '):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
@@ -100,7 +100,7 @@ if uploaded_file is not None:
 
         #TRAITEMENT DES SUPPORTS
 
-        CHAMBRE=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|Galerie',na=False)]
+        CHAMBRE=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|Galerie|SI',na=False)]
         CHAMBRE=CHAMBRE.reset_index(drop=True)
 
         #TRAITEMENT DE LA CAPACITE
