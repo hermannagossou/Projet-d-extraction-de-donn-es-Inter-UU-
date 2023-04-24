@@ -100,7 +100,7 @@ if uploaded_file is not None:
 
         #TRAITEMENT DES SUPPORTS
 
-        CHAMBRE=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|Galerie|SI',na=False)]
+        CHAMBRE=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|Galerie',na=False)]
         CHAMBRE=CHAMBRE.reset_index(drop=True)
 
         #TRAITEMENT DE LA CAPACITE
