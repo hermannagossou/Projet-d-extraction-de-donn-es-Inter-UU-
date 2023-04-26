@@ -128,6 +128,8 @@ if uploaded_file is not None:
             continue
           elif CHAINE[index_support-1].startswith('SITE'):
             continue
+          else:
+            SUPPORT_FINAL.append(support)
         
         SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
         
