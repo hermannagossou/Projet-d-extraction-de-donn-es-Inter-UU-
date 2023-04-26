@@ -126,6 +126,8 @@ if uploaded_file is not None:
             SUPPORT_FINAL.append(support)
           elif CHAINE[index_support-1]!='PLAQUE':
             SUPPORT_FINAL.append(support)
+          elif CHAINE[index_support-1].startswith('SITE'):
+            continue
         
         SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
         
