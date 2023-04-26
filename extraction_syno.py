@@ -86,17 +86,17 @@ if uploaded_file is not None:
         MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V',na=False)]
 
         for index_modele,value_modele in zip(MODELE.index,MODELE.values):
-            if CHAINE[index_modele+1].endswith('FR6')|CHAINE[index_modele+1].endswith('FR6 '):
+            if 'FR6' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('HD')|CHAINE[index_modele+1].endswith('HD '):
+            elif 'HD' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('T0')|CHAINE[index_modele+1].endswith('T0 '):
+            elif 'T0' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('T1')|CHAINE[index_modele+1].endswith('T1 ')|CHAINE[index_modele+1].endswith('T1 FDP'):
+            elif 'T1' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('Taille 0')|CHAINE[index_modele+1].endswith('Taille 0 '):
+            elif 'Taille 0' in CHAINE[index_modele+1]
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif CHAINE[index_modele+1].endswith('PEO')|CHAINE[index_modele+1].endswith('PEO '):
+            elif 'PEO' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
 
         MODELE_FINAL=pd.Series(MODELE_FINAL)
