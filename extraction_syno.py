@@ -144,8 +144,8 @@ if uploaded_file is not None:
 
         LONGUEUR=pd.Series(LONGUEUR)
 
-        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,CHAMBRE,ADRESSE_FINAL],axis=1)
-        df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'CHAMBRE',7:'ADRESSE'})
+        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,CHAMBRE,ADRESSE_FINAL,REFCOM],axis=1)
+        df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'CHAMBRE',7:'ADRESSE',8:'REF COMMANDE'})
 
         st.subheader(index_df)
         st.write(df_out)
