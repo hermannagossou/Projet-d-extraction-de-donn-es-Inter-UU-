@@ -41,6 +41,8 @@ if uploaded_file is not None:
                 continue
             elif adresse.startswith('SI'):
                 continue
+            elif adresse.startswith('T'):
+                continue
             else:
                 ADRESSE_FINAL.append(adresse)
                 
