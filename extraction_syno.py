@@ -20,7 +20,6 @@ if uploaded_file is not None:
         #INITIALISATION DES VARIABLES
 
         ADRESSE_FINAL=[]
-        SUPPORT_FINAL=[]
         CAPACITE_FINAL=[]
         EPISSURE=[]
         LONGUEUR=[]
