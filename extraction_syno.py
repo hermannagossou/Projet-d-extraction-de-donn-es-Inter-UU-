@@ -126,6 +126,8 @@ if uploaded_file is not None:
             SUPPORT_FINAL.append(support)
           elif 'SITE' not in CHAINE[index_support-1]:
             SUPPORT_FINAL.append(support)
+          elif 'PLAQUE' not in CHAINE[index_support-1]:
+            SUPPORT_FINAL.append(support)
 
         SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
         #TRAITEMENT DE LA CAPACITE
