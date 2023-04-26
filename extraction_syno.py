@@ -104,34 +104,8 @@ if uploaded_file is not None:
         #TRAITEMENT DES SUPPORTS
 
         SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|[0-9]{5}_[A-Z]{3}[0-9]{2}',na=False)]
+        SUPPORTS=SUPPORT.reset_index(drop=True)
         
-        for index_support,support in zip(SUPPORTS.index,SUPPORTS.values):
-          if support.startswith('ORF'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('BYT'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('NXL'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('COL'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('OPE'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('NEX'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('POL'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('ATC'):
-            SUPPORT_FINAL.append(support)
-          elif support.startswith('OPT'):
-            SUPPORT_FINAL.append(support)
-          #elif CHAINE[index_support-1].startswith('PLAQUE'):
-          #  continue
-          #elif CHAINE[index_support-1].startswith('SITE ANCRAGE'):
-          #  continue
-          #else:
-          #  SUPPORT_FINAL.append(support)
-        
-        SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
         
         #TRAITEMENT DE LA CAPACITE
 
@@ -172,7 +146,7 @@ if uploaded_file is not None:
 
         LONGUEUR=pd.Series(LONGUEUR)
 
-        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORT_FINAL,ADRESSE_FINAL,REFCOM],axis=1)
+        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
         df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
         st.subheader(index_df)
