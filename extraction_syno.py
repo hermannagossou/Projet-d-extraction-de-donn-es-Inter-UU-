@@ -20,6 +20,7 @@ if uploaded_file is not None:
         #INITIALISATION DES VARIABLES
 
         ADRESSE_FINAL=[]
+        SUPPORT_FINAL=[]
         CAPACITE_FINAL=[]
         EPISSURE=[]
         LONGUEUR=[]
@@ -102,9 +103,31 @@ if uploaded_file is not None:
 
         #TRAITEMENT DES SUPPORTS
 
-        CHAMBRE=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|Galerie|HIV_',na=False)]
-        CHAMBRE=CHAMBRE.reset_index(drop=True)
+        SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_|[0-9]{5}_[A-Z]{3}[0-9]{2}',na=False)]
+        
+        for index_support,support in zip(SUPPORTS.index,SUPPORTS.values):
+          if support.startswith('ORF'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('BYT'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('NXL'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('COL'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('OPE'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('NEX'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('POL'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('ATC'):
+            SUPPORT_FINAL.append(support)
+          elif support.startswith('OPT'):
+            SUPPORT_FINAL.append(support)
+          elif 'SITE' not in CHAINE[index_support-1]:
+            SUPPORT_FINAL.append(support)
 
+        SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
         #TRAITEMENT DE LA CAPACITE
 
         CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
@@ -144,8 +167,8 @@ if uploaded_file is not None:
 
         LONGUEUR=pd.Series(LONGUEUR)
 
-        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,CHAMBRE,ADRESSE_FINAL,REFCOM],axis=1)
-        df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'CHAMBRE',7:'ADRESSE',8:'REF COMMANDE'})
+        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORT_FINAL,ADRESSE_FINAL,REFCOM],axis=1)
+        df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
         st.subheader(index_df)
         st.write(df_out)
