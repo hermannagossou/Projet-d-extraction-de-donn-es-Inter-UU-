@@ -126,7 +126,7 @@ if uploaded_file is not None:
             SUPPORT_FINAL.append(support)
           elif CHAINE[index_support-1].startswith('PLAQUE'):
             continue
-          elif CHAINE[index_support-1].startswith('SITE'):
+          elif CHAINE[index_support-1].startswith('SITE ANCRAGE'):
             continue
           else:
             SUPPORT_FINAL.append(support)
