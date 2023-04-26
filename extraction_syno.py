@@ -124,7 +124,7 @@ if uploaded_file is not None:
             SUPPORT_FINAL.append(support)
           elif support.startswith('OPT'):
             SUPPORT_FINAL.append(support)
-          elif ('SITE' not in CHAINE[index_support-1])|(CHAINE[index_support-1]!='PLAQUE'):
+          elif (CHAINE[index_support-1]!='PLAQUE'):
             SUPPORT_FINAL.append(support)
 
         SUPPORT_FINAL=pd.Series(SUPPORT_FINAL)
