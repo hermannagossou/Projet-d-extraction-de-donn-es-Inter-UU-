@@ -142,8 +142,6 @@ if uploaded_file is not None:
 
         for il in index_long:
             LONGUEUR.append(CHAINE[il])
-            if il==-1:
-                continue
 
         LONGUEUR=pd.Series(LONGUEUR)
 
