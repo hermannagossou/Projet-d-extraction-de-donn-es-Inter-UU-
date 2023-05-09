@@ -97,6 +97,8 @@ if uploaded_file is not None:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'PEO' in CHAINE[index_modele+1]:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
+            elif 'TAILLE 1' in CHAINE[index_modele+1]:
+                MODELE_FINAL.append(CHAINE[index_modele+1])
 
         MODELE_FINAL=pd.Series(MODELE_FINAL)
 
