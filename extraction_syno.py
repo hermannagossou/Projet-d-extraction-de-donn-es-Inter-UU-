@@ -125,12 +125,29 @@ if uploaded_file is not None:
         CAB=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
         for index_cab in CAB.index:
-            if (CHAINE[index_cab+1].startswith('CIU')|CHAINE[index_cab+1].startswith('CDP'))|(CHAINE[index_cab+1].startswith('CIC'))|(CHAINE[index_cab+1].startswith('CSA'))|(CHAINE[index_cab+1].startswith('CAD'))|(CHAINE[index_cab+1].startswith('CDD')):
+            if 'CIU' in CHAINE[index_cab+1]:
                 index_cable.append(index_cab+1)
-            #elif (CHAINE[index_cab+1].startswith('CIU')|('CDP' in CHAINE[index_cab+2])|(CHAINE[index_cab+2].startswith('CIC'))|(CHAINE[index_cab+2].startswith('CSA'))|(CHAINE[index_cab+2].startswith('CAD'))|(CHAINE[index_cab+2].startswith('CDD')):
+            elif 'CDP' in CHAINE[index_cab+1]:
+                index_cable.append(index_cab+1)
+            elif 'CIC' in CHAINE[index_cab+1]:
+                index_cable.append(index_cab+1)
+            elif 'CSA' in CHAINE[index_cab+1]:
+                index_cable.append(index_cab+1)
+            elif 'CAD' in CHAINE[index_cab+1]:
+                index_cable.append(index_cab+1)
+            elif 'CDD' in CHAINE[index_cab+1]:
+                index_cable.append(index_cab+1)
             elif 'CIU' in CHAINE[index_cab+2]:
                 index_cable.append(index_cab+2)
             elif 'CDP' in CHAINE[index_cab+2]:
+                index_cable.append(index_cab+2)
+            elif 'CIC' in CHAINE[index_cab+2]:
+                index_cable.append(index_cab+2)
+            elif 'CSA' in CHAINE[index_cab+2]:
+                index_cable.append(index_cab+2)
+            elif 'CAD' in CHAINE[index_cab+2]:
+                index_cable.append(index_cab+2)
+            elif 'CDD' in CHAINE[index_cab+2]:
                 index_cable.append(index_cab+2)
 
         for ic in index_cable:
