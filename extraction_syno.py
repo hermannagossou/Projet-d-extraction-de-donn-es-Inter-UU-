@@ -82,7 +82,7 @@ if uploaded_file is not None:
 
         #TRAITEMENT DES MODELES
 
-        MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V',na=False)]
+        MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
 
         for index_modele,value_modele in zip(MODELE.index,MODELE.values):
             if 'FR6' in CHAINE[index_modele+1]:
