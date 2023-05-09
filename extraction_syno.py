@@ -128,7 +128,9 @@ if uploaded_file is not None:
             if (CHAINE[index_cab+1].startswith('CIU')|CHAINE[index_cab+1].startswith('CDP'))|(CHAINE[index_cab+1].startswith('CIC'))|(CHAINE[index_cab+1].startswith('CSA'))|(CHAINE[index_cab+1].startswith('CAD'))|(CHAINE[index_cab+1].startswith('CDD')):
                 index_cable.append(index_cab+1)
             #elif (CHAINE[index_cab+1].startswith('CIU')|('CDP' in CHAINE[index_cab+2])|(CHAINE[index_cab+2].startswith('CIC'))|(CHAINE[index_cab+2].startswith('CSA'))|(CHAINE[index_cab+2].startswith('CAD'))|(CHAINE[index_cab+2].startswith('CDD')):
-            elif ('CIU' in CHAINE[index_cab+2]|'CDP' in CHAINE[index_cab+2]):
+            elif 'CIU' in CHAINE[index_cab+2]:
+                index_cable.append(index_cab+2)
+            elif 'CDP' in CHAINE[index_cab+2]:
                 index_cable.append(index_cab+2)
 
         for ic in index_cable:
