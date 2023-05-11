@@ -91,13 +91,15 @@ if uploaded_file is not None:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'T0' in str(CHAINE[index_modele+1]):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'T1' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('T1'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'Taille 0' in str(CHAINE[index_modele+1]):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'PEO' in str(CHAINE[index_modele+1]):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'TAILLE 1' in str(CHAINE[index_modele+1]):
+                MODELE_FINAL.append(CHAINE[index_modele+1])
+            elif 'PDD' in str(CHAINE[index_modele+1]):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
 
         MODELE_FINAL=pd.Series(MODELE_FINAL)
