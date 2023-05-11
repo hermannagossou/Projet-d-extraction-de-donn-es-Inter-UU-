@@ -85,19 +85,21 @@ if uploaded_file is not None:
         MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
 
         for index_modele,value_modele in zip(MODELE.index,MODELE.values):
-            if 'FR6' in str(CHAINE[index_modele+1]):
+            if str(CHAINE[index_modele+1]).endswith('FR6'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'HD' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('HD'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'T0' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('T0'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif str(CHAINE[index_modele+1]).endswith('T1'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'Taille 0' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('TAILLE 0'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'PEO' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('Taille 0'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'TAILLE 1' in str(CHAINE[index_modele+1]):
+            elif str(CHAINE[index_modele+1]).endswith('PEO'):
+                MODELE_FINAL.append(CHAINE[index_modele+1])
+            elif str(CHAINE[index_modele+1]).endswith('TAILLE 1'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'PDD' in str(CHAINE[index_modele+1]):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
