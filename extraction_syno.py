@@ -99,6 +99,8 @@ if uploaded_file is not None:
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif str(CHAINE[index_modele+1]).endswith('PEO'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
+            elif str(CHAINE[index_modele+1]).endswith('FDP'):
+                MODELE_FINAL.append(CHAINE[index_modele+1])
             elif str(CHAINE[index_modele+1]).endswith('TAILLE 1'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif 'PDD' in str(CHAINE[index_modele+1]):
