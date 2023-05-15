@@ -37,11 +37,11 @@ if uploaded_file is not None:
 
         ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè+]',na=False)]
         for adresse in ADRESSE:
-            if adresse.startswith('RTSK'):
+            if str(adresse).startswith('RTSK'):
                 continue
-            elif adresse.startswith('SI'):
+            elif str(adresse).startswith('SI'):
                 continue
-            elif adresse.startswith('T'):
+            elif str(adresse).startswith('T'):
                 continue
             else:
                 ADRESSE_FINAL.append(adresse)
