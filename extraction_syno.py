@@ -54,7 +54,7 @@ if uploaded_file is not None:
 
         for index_epi in EPI.index:
             if (index_epi+1) > len(CHAINE):
-                continue
+                print(len(CHAINE))
             elif str(CHAINE[index_epi+1]).startswith('ORF'):
                 EPISSURE.append(CHAINE[index_epi])
             elif str(CHAINE[index_epi+1]).startswith('BYT'):
