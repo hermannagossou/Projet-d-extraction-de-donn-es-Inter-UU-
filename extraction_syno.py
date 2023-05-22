@@ -53,7 +53,9 @@ if uploaded_file is not None:
         EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT|ADDUCTION',na=False)]
 
         for index_epi in EPI.index:
-            if str(CHAINE[index_epi+1]).startswith('ORF'):
+            if index_epi+1 > len(CHAINE):
+                continue
+            elif str(CHAINE[index_epi+1]).startswith('ORF'):
                 EPISSURE.append(CHAINE[index_epi])
             elif str(CHAINE[index_epi+1]).startswith('BYT'):
                 EPISSURE.append(CHAINE[index_epi])
