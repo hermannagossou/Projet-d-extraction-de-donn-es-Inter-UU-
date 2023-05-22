@@ -53,7 +53,9 @@ if uploaded_file is not None:
         EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT|ADDUCTION',na=False)]
 
         for index_epi in EPI.index:
-            if (index_epi+1) > len(CHAINE):
+            if index_epi+1 not in range(len(CHAINE)):
+                continue
+            elif (index_epi+1) > len(CHAINE):
                 print(len(CHAINE))
             elif str(CHAINE[index_epi+1]).startswith('ORF'):
                 EPISSURE.append(CHAINE[index_epi])
@@ -85,7 +87,9 @@ if uploaded_file is not None:
         MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
 
         for index_modele,value_modele in zip(MODELE.index,MODELE.values):
-            if str(CHAINE[index_modele+1]).endswith('FR6'):
+            if index_modele+1 not in range(len(CHAINE)):
+                continue
+            elif str(CHAINE[index_modele+1]).endswith('FR6'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
             elif str(CHAINE[index_modele+1]).endswith('HD'):
                 MODELE_FINAL.append(CHAINE[index_modele+1])
