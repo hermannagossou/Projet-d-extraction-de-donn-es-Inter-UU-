@@ -14,180 +14,184 @@ uploaded_file = st.file_uploader("Choisissez un fichier")
 if uploaded_file is not None:
     dict_df = pd.read_excel(uploaded_file,sheet_name=None)
     for index_df in dict_df:
-        CHAINE=dict_df[index_df].unstack().dropna().reset_index(drop=True)
-        CHAINE_array=CHAINE.values
+        if index_df == 'Données':
+            continue
+        else:
+            CHAINE=dict_df[index_df].unstack().dropna().reset_index(drop=True)
+            CHAINE_array=CHAINE.values
 
-        #INITIALISATION DES VARIABLES
+            #INITIALISATION DES VARIABLES
 
-        ADRESSE_FINAL=[]
-        CAPACITE_FINAL=[]
-        EPISSURE=[]
-        LONGUEUR=[]
-        CABLE=[]
-        MODELE_FINAL=[]
-        index_long=[]
-        index_cable=[]
+            ADRESSE_FINAL=[]
+            CAPACITE_FINAL=[]
+            EPISSURE=[]
+            LONGUEUR=[]
+            CABLE=[]
+            MODELE_FINAL=[]
+            index_long=[]
+            index_cable=[]
 
-        #TRAITEMENT DES REF COMMANDES
+            #TRAITEMENT DES REF COMMANDES
 
-        REFCOM=CHAINE[CHAINE.str.contains('F[0-9]{11}',na=False)]
-        REFCOM=REFCOM.reset_index(drop=True)
+            REFCOM=CHAINE[CHAINE.str.contains('F[0-9]{11}',na=False)]
+            REFCOM=REFCOM.reset_index(drop=True)
 
-        #TRAITEMENT DES ADRESSES
+            #TRAITEMENT DES ADRESSES
 
-        ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè+]',na=False)]
-        for adresse in ADRESSE:
-            if str(adresse).startswith('RTSK'):
-                continue
-            elif str(adresse).startswith('SI'):
-                continue
-            elif str(adresse).startswith('T'):
-                continue
-            else:
-                ADRESSE_FINAL.append(adresse)
-                
-        ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
+            ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè+]',na=False)]
+            for adresse in ADRESSE:
+                if str(adresse).startswith('RTSK'):
+                    continue
+                elif str(adresse).startswith('SI'):
+                    continue
+                elif str(adresse).startswith('T'):
+                    continue
+                else:
+                    ADRESSE_FINAL.append(adresse)
 
-        #TRAITEMENT DES EPISSURES
+            ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
 
-        EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT|ADDUCTION',na=False)]
+            #TRAITEMENT DES EPISSURES
 
-        for index_epi in EPI.index:
-            if index_epi+1 not in range(len(CHAINE)):
-                continue
-            elif (index_epi+1) > len(CHAINE):
-                print(len(CHAINE))
-            elif str(CHAINE[index_epi+1]).startswith('ORF'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('BYT'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('NXL'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('OPE'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('COL'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('BPE'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('BPP'):
-                EPISSURE.append(CHAINE[index_epi])
-            elif str(CHAINE[index_epi+1]).startswith('BPI'):
-                EPISSURE.append(CHAINE[index_epi])
+            EPI=CHAINE[CHAINE.str.contains('DROIT|PASSAGE|EPISSURE|RACCORDEMENT|ADDUCTION',na=False)]
 
-        EPISSURE=pd.Series(EPISSURE)
+            for index_epi in EPI.index:
+                if index_epi+1 not in range(len(CHAINE)):
+                    continue
+                elif (index_epi+1) > len(CHAINE):
+                    print(len(CHAINE))
+                elif str(CHAINE[index_epi+1]).startswith('ORF'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('BYT'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('NXL'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('OPE'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('COL'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('BPE'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('BPP'):
+                    EPISSURE.append(CHAINE[index_epi])
+                elif str(CHAINE[index_epi+1]).startswith('BPI'):
+                    EPISSURE.append(CHAINE[index_epi])
 
-        #TRAITEMENT DES BPE
+            EPISSURE=pd.Series(EPISSURE)
 
-        BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPE-V',na=False)]
-        
-        BPEU=BPEU.reset_index(drop=True)
+            #TRAITEMENT DES BPE
 
-        #TRAITEMENT DES MODELES
+            BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPE-V',na=False)]
 
-        MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
+            BPEU=BPEU.reset_index(drop=True)
 
-        for index_modele,value_modele in zip(MODELE.index,MODELE.values):
-            if index_modele+1 not in range(len(CHAINE)):
-                continue
-            elif str(CHAINE[index_modele+1]).endswith('FR6'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('HD'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('T0'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('T1'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('TAILLE 0'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('Taille 0'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('PEO'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('FDP'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif str(CHAINE[index_modele+1]).endswith('TAILLE 1'):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
-            elif 'PDD' in str(CHAINE[index_modele+1]):
-                MODELE_FINAL.append(CHAINE[index_modele+1])
+            #TRAITEMENT DES MODELES
 
-        MODELE_FINAL=pd.Series(MODELE_FINAL)
+            MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
 
-        #TRAITEMENT DES SUPPORTS
+            for index_modele,value_modele in zip(MODELE.index,MODELE.values):
+                if index_modele+1 not in range(len(CHAINE)):
+                    continue
+                elif str(CHAINE[index_modele+1]).endswith('FR6'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('HD'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('T0'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('T1'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('TAILLE 0'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('Taille 0'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('PEO'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('FDP'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif str(CHAINE[index_modele+1]).endswith('TAILLE 1'):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
+                elif 'PDD' in str(CHAINE[index_modele+1]):
+                    MODELE_FINAL.append(CHAINE[index_modele+1])
 
-        SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
-        SUPPORTS=SUPPORTS.reset_index(drop=True)
-        
-        
-        #TRAITEMENT DE LA CAPACITE
+            MODELE_FINAL=pd.Series(MODELE_FINAL)
 
-        CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
-        
-        for capacite in CAPACITE:
-          if '\n' in capacite:
-            CAPACITE_FINAL.append(capacite.split('\n')[0].strip())
-          else:
-            CAPACITE_FINAL.append(capacite)
+            #TRAITEMENT DES SUPPORTS
 
-        CAPACITE_FINAL=pd.Series(CAPACITE_FINAL)
+            SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
+            SUPPORTS=SUPPORTS.reset_index(drop=True)
 
-        #TRAITEMENT DES CABLES
 
-        CAB=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+            #TRAITEMENT DE LA CAPACITE
 
-        for index_cab in CAB.index:
-            if 'CIU' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CDP' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CIC' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CSA' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CAD' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CDD' in CHAINE[index_cab+1]:
-                index_cable.append(index_cab+1)
-            elif 'CIU' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
-            elif 'CDP' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
-            elif 'CIC' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
-            elif 'CSA' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
-            elif 'CAD' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
-            elif 'CDD' in CHAINE[index_cab+2]:
-                index_cable.append(index_cab+2)
+            CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
-        for ic in index_cable:
-            CABLE.append(CHAINE[ic])
+            for capacite in CAPACITE:
+              if '\n' in capacite:
+                CAPACITE_FINAL.append(capacite.split('\n')[0].strip())
+              else:
+                CAPACITE_FINAL.append(capacite)
 
-        CABLE=pd.Series(CABLE)
+            CAPACITE_FINAL=pd.Series(CAPACITE_FINAL)
 
-        #TRAITEMENT DES LONGUEURS
+            #TRAITEMENT DES CABLES
 
-        LONG=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+            CAB=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
-        for index_capa in LONG.index:
-            index_long.append(index_capa-1)
+            for index_cab in CAB.index:
+                if 'CIU' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CDP' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CIC' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CSA' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CAD' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CDD' in CHAINE[index_cab+1]:
+                    index_cable.append(index_cab+1)
+                elif 'CIU' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
+                elif 'CDP' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
+                elif 'CIC' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
+                elif 'CSA' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
+                elif 'CAD' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
+                elif 'CDD' in CHAINE[index_cab+2]:
+                    index_cable.append(index_cab+2)
 
-        for il in index_long:
-            LONGUEUR.append(CHAINE[il])
+            for ic in index_cable:
+                CABLE.append(CHAINE[ic])
 
-        LONGUEUR=pd.Series(LONGUEUR)
+            CABLE=pd.Series(CABLE)
 
-        df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
-        df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
+            #TRAITEMENT DES LONGUEURS
 
-        st.subheader(index_df)
-        st.write(df_out)
-        csv=convert_df(df_out)
+            LONG=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
-        st.download_button(
-            label='Télécharger',
-            data=csv,
-            file_name=index_df+'_out.csv',
-            mime='text/csv'
-        )
+            for index_capa in LONG.index:
+                index_long.append(index_capa-1)
+
+            for il in index_long:
+                LONGUEUR.append(CHAINE[il])
+
+            LONGUEUR=pd.Series(LONGUEUR)
+
+            df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
+            df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
+
+            st.subheader(index_df)
+            st.write(df_out)
+            csv=convert_df(df_out)
+
+            st.download_button(
+                label='Télécharger',
+                data=csv,
+                file_name=index_df+'_out.csv',
+                mime='text/csv'
+            )
+
 
