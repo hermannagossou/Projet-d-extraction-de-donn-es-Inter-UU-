@@ -102,7 +102,7 @@ if uploaded_file is not None:
                         MODELE_FINAL.append(CHAINE[index_modele+1])
                     elif 'TAILLE 0' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif Taille 0' in str(CHAINE[index_modele+1]):
+                    elif 'Taille 0' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
                     elif 'PEO' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
