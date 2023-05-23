@@ -94,23 +94,21 @@ if uploaded_file is not None:
                 for index_modele,value_modele in zip(MODELE.index,MODELE.values):
                     if index_modele+1 not in range(len(CHAINE)):
                         continue
-                    elif str(CHAINE[index_modele+1]).endswith('FR6'):
+                    elif 'FR6' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('HD'):
+                    elif 'T0' in str(CHAINE[index_modele+1]).endswith('T0'):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('T0'):
+                    elif 'T1' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('T1'):
+                    elif 'TAILLE 0' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('TAILLE 0'):
+                    elif Taille 0' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('Taille 0'):
+                    elif 'PEO' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('PEO'):
+                    elif 'FDP' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('FDP'):
-                        MODELE_FINAL.append(CHAINE[index_modele+1])
-                    elif str(CHAINE[index_modele+1]).endswith('TAILLE 1'):
+                    elif 'TAILLE 1 in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
                     elif 'PDD' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1])
