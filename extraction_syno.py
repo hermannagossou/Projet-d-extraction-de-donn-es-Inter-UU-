@@ -14,7 +14,7 @@ uploaded_file = st.file_uploader("Choisissez un fichier")
 if uploaded_file is not None:
     dict_df = pd.read_excel(uploaded_file,sheet_name=None)
     for index_df in dict_df:
-        if index_df == 'Données':
+        if index_df == 'Données'|index_df == 'Feuil1':
             continue
         else:
             CHAINE=dict_df[index_df].unstack().dropna().reset_index(drop=True)
