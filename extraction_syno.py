@@ -16,8 +16,8 @@ if uploaded_file is not None:
     for index_df in dict_df:
         if index_df == 'Données':
             continue
-        elif index_df == 'Feuil1':
-            continue
+        ##elif index_df == 'Feuil1':
+            ##continue
         else:
             CHAINE=dict_df[index_df].unstack().dropna().reset_index(drop=True)
 
