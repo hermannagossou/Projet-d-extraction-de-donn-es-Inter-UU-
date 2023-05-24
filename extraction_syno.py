@@ -40,7 +40,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES ADRESSES
 
-                ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+$',na=False)]
+                ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
                 for adresse in ADRESSE:
                     if str(adresse).startswith('RTSK'):
                         continue
