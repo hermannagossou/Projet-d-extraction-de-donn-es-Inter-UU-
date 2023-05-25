@@ -176,6 +176,10 @@ if uploaded_file is not None:
 
                 LONGUEUR=pd.Series(LONGUEUR)
                 
+                #TRAITEMENT DES REF COMMANDES
+
+                REFCOM=CHAINE[CHAINE.str.contains('F[0-9]{11}',na=False)]
+                REFCOM=REFCOM.reset_index(drop=True)
                 
 
                 df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
