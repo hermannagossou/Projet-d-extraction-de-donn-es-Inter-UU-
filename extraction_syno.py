@@ -32,11 +32,7 @@ if uploaded_file is not None:
                 MODELE_FINAL=[]
                 index_long=[]
                 index_cable=[]
-
-                #TRAITEMENT DES REF COMMANDES
-
-                REFCOM=CHAINE[CHAINE.str.contains('F[0-9]{11}',na=False)]
-                REFCOM=REFCOM.reset_index(drop=True)
+                REFCOM2=[]
 
                 #TRAITEMENT DES ADRESSES
 
@@ -179,6 +175,22 @@ if uploaded_file is not None:
                     LONGUEUR.append(CHAINE[il])
 
                 LONGUEUR=pd.Series(LONGUEUR)
+                
+                #TRAITEMENT DES REF COMMANDES
+
+                for refcom in list(CHAINE[CAB.index+3]):
+                    if refcom.startswith('F'):
+                        index_ref=CAB.index+3
+                    else:
+                        index_ref=CAB.index+2
+
+                for element2 in CHAINE[index_ref]:
+                    if element2.startswith('F'):
+                        REFCOM2.append(element)
+                    else:
+                        REFCOM2.append(' ')
+                        
+                REFCOM=pd.Series(REFCOM2)
 
                 df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
                 df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
