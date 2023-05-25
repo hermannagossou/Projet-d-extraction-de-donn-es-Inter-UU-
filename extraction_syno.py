@@ -178,11 +178,12 @@ if uploaded_file is not None:
                 
                 #TRAITEMENT DES REF COMMANDES
 
-                for refcom in list(CHAINE[CAB.index+3]):
-                    if refcom.startswith('F'):
-                        index_ref=CAB.index+3
-                    else:
-                        index_ref=CAB.index+2
+                REFSELECT3=list(CHAINE[CAB.index+3])
+
+                if REFSELECT3[0].startswith('F')|REFSELECT3[round(len(REFSELECT3)/2)].startswith('F')|REFSELECT3[len(REFSELECT3)-1].startswith('F'):
+                    index_ref=CAB.index+3
+                else:
+                    index_ref=CAB.index+2
 
                 for element2 in CHAINE[index_ref]:
                     if element2.startswith('F'):
