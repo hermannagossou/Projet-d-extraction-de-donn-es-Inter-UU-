@@ -176,22 +176,7 @@ if uploaded_file is not None:
 
                 LONGUEUR=pd.Series(LONGUEUR)
                 
-                #TRAITEMENT DES REF COMMANDES
-
-                REFSELECT3=list(CHAINE[CAB.index+3])
-
-                if REFSELECT3[0].startswith('F')|REFSELECT3[round(len(REFSELECT3)/2)].startswith('F')|REFSELECT3[len(REFSELECT3)-1].startswith('F'):
-                    index_ref=CAB.index+3
-                else:
-                    index_ref=CAB.index+2
-
-                for element2 in CHAINE[index_ref]:
-                    if element2.startswith('F'):
-                        REFCOM2.append(element2)
-                    else:
-                        REFCOM2.append(' ')
-                        
-                REFCOM=pd.Series(REFCOM2)
+                
 
                 df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
                 df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
