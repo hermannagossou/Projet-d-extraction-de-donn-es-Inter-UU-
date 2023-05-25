@@ -77,7 +77,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES BPE
 
-                BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPE-V|^SI',na=False)]
+                BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPE-V|^SI[0-9]{5}',na=False)]
 
                 BPEU=BPEU.reset_index(drop=True)
 
