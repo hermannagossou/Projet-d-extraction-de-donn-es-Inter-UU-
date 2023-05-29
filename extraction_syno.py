@@ -185,8 +185,6 @@ if uploaded_file is not None:
                 else:
                     index_ref=CAB.index+2
 
-                CHAINE[index_ref]
-
                 for element in CHAINE[index_ref]:
                     if element.startswith('F'):
                         REFCOM2.append(element)
