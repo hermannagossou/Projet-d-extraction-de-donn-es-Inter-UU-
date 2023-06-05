@@ -180,7 +180,7 @@ if uploaded_file is not None:
 
                 REFSELECT=list(CHAINE[CAB.index+3])
                 
-                if str(REFSELECT[0]).startswith('F')|str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F')|str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
+                if str(REFSELECT[0]).startswith('F')|str(REFSELECT[1]).startswith('F')|str(REFSELECT[2]).startswith('F')|str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F')|str(REFSELECT[len(REFSELECT)-3]).startswith('F')|str(REFSELECT[len(REFSELECT)-2]).startswith('F')|str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
                     index_ref=CAB.index+3
                 else:
                     index_ref=CAB.index+2
