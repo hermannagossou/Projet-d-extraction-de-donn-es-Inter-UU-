@@ -180,16 +180,26 @@ if uploaded_file is not None:
 
                 REFSELECT=list(CHAINE[CAB.index+3])
                 
-                if str(REFSELECT[0]).startswith('F')|str(REFSELECT[1]).startswith('F')|str(REFSELECT[2]).startswith('F')|str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F')|str(REFSELECT[len(REFSELECT)-3]).startswith('F')|str(REFSELECT[len(REFSELECT)-2]).startswith('F')|str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
-                    index_ref=CAB.index+3
+                if str(REFSELECT[0]).startswith('F'):
+                  index_ref=CAB.index+3
+                elif str(REFSELECT[1]).startswith('F'):
+                  index_ref=CAB.index+3
+                elif str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F'):
+                  index_ref=CAB.index+3
+                elif str(REFSELECT[len(REFSELECT)-3]).startswith('F'):
+                  index_ref=CAB.index+3
+                elif str(REFSELECT[len(REFSELECT)-2]).startswith('F'):
+                  index_ref=CAB.index+3
+                elif str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
+                  index_ref=CAB.index+3
                 else:
-                    index_ref=CAB.index+2
+                  index_ref=CAB.index+2
 
                 for element in CHAINE[index_ref]:
-                    if element.startswith('F'):
-                        REFCOM2.append(element)
-                    else:
-                        REFCOM2.append(' ')
+                  if element.startswith('F'):
+                    REFCOM2.append(element)
+                  else:
+                    REFCOM2.append(' ')
 
                 REFCOM=pd.Series(REFCOM2)
                 
