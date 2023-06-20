@@ -33,6 +33,7 @@ if uploaded_file is not None:
                 index_long=[]
                 index_cable=[]
                 REFCOM2=[]
+                REFSELECT=[]
 
                 #TRAITEMENT DES ADRESSES
 
@@ -178,6 +179,12 @@ if uploaded_file is not None:
                 
                 #TRAITEMENT DES REF COMMANDES
 
+                for select in CAB.index+3:
+                  if select <len(CHAINE):
+                    REFSELECT.append(CHAINE[select])
+                  else:
+                    continue
+
                 REFSELECT=list(CHAINE[CAB.index+3])
                 
                 if str(REFSELECT[0]).startswith('F'):
@@ -217,5 +224,3 @@ if uploaded_file is not None:
                     file_name=index_df+'_out.csv',
                     mime='text/csv'
                 )
-
-
