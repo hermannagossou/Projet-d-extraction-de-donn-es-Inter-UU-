@@ -184,8 +184,6 @@ if uploaded_file is not None:
                     REFSELECT.append(CHAINE[select])
                   else:
                     continue
-
-                REFSELECT=list(CHAINE[CAB.index+3])
                 
                 if str(REFSELECT[0]).startswith('F'):
                   index_ref=CAB.index+3
