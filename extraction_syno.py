@@ -34,6 +34,7 @@ if uploaded_file is not None:
                 index_cable=[]
                 REFCOM2=[]
                 REFSELECT=[]
+                index_ref_mod=[]
 
                 #TRAITEMENT DES ADRESSES
 
@@ -200,7 +201,13 @@ if uploaded_file is not None:
                 else:
                   index_ref=CAB.index+2
 
-                for element in CHAINE[index_ref]:
+                for ref in index_ref:
+                  if ref < len(CHAINE):
+                    index_ref_mod.append(ref)
+                  else:
+                    continue
+
+                for element in CHAINE[index_ref_mod]:
                   if element.startswith('F'):
                     REFCOM2.append(element)
                   else:
