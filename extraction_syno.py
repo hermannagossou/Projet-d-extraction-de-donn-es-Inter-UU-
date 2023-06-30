@@ -208,7 +208,7 @@ if uploaded_file is not None:
                     continue
 
                 for element in CHAINE[index_ref_mod]:
-                  if element.startswith('F'):
+                  if str(element).startswith('F'):
                     REFCOM2.append(element)
                   else:
                     REFCOM2.append(' ')
