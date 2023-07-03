@@ -136,29 +136,29 @@ if uploaded_file is not None:
                 for index_cab in CAB.index:
                     if index_cab+1 not in range(len(CHAINE)):
                         continue
-                    elif 'CIU' in CHAINE[index_cab+1]:
+                    elif 'CIU' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CDP' in CHAINE[index_cab+1]:
+                    elif 'CDP' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CIC' in CHAINE[index_cab+1]:
+                    elif 'CIC' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CSA' in CHAINE[index_cab+1]:
+                    elif 'CSA' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CAD' in CHAINE[index_cab+1]:
+                    elif 'CAD' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CDD' in CHAINE[index_cab+1]:
+                    elif 'CDD' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
-                    elif 'CIU' in CHAINE[index_cab+2]:
+                    elif 'CIU' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CDP' in CHAINE[index_cab+2]:
+                    elif 'CDP' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CIC' in CHAINE[index_cab+2]:
+                    elif 'CIC' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CSA' in CHAINE[index_cab+2]:
+                    elif 'CSA' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CAD' in CHAINE[index_cab+2]:
+                    elif 'CAD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CDD' in CHAINE[index_cab+2]:
+                    elif 'CDD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
 
                 for ic in index_cable:
