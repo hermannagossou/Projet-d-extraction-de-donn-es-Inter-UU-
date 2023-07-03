@@ -119,7 +119,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DE LA CAPACITE
 
-                CAPACITE=CHAINE[CHAINE.str.startswith('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+                CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
                 for capacite in CAPACITE:
                   if '\n' in capacite:
