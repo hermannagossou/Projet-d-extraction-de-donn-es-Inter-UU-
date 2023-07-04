@@ -12,7 +12,7 @@ st.title('EXTRACTION PDS')
 uploaded_file = st.file_uploader("Choisissez un fichier")
 
 if uploaded_file is not None:
-    dict_df = pd.read_excel(uploaded_file,sheet_name=None)
+    df_dict = pd.read_excel(uploaded_file,sheet_name=None)
     ELEMENT=[]
     LIEN=[]
     ADRESSE=[]
