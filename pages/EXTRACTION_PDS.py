@@ -7,7 +7,7 @@ import numpy as np
 def convert_df(df):
     return df.to_csv().encode('utf-8')
 
-st.title('EXTRACTION SYNOPTIQUE')
+st.title('EXTRACTION PDS')
 
 uploaded_file = st.file_uploader("Choisissez un fichier")
 
