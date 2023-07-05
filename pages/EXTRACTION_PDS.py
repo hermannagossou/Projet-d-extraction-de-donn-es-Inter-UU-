@@ -68,8 +68,8 @@ if uploaded_file is not None:
             for index_type,type in enumerate(PDS):
                 if index_type not in range(len(PDS)):
                     continue
-            elif str(type)=='TYPE DE BPE':
-                TYPE.append(PDS[index_type+1])
+                elif str(type)=='TYPE DE BPE':
+                    TYPE.append(PDS[index_type+1])
         
             # Récupération Champ Poche
             for index_poche,poche in enumerate(PDS):
