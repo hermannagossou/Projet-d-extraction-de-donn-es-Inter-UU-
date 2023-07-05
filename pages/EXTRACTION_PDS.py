@@ -56,7 +56,7 @@ if uploaded_file is not None:
     
       # Récupération Champ Chambre
       for index_chambre,chambre in enumerate(PDS):
-        if index_chambre > range(len(PDS)):
+        if index_chambre > len(PDS):
           continue
         elif str(chambre)=='ADRESSE / N° CHAMBRE':
           CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
