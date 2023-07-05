@@ -26,7 +26,7 @@ if uploaded_file is not None:
     
     for frame in df_dict:
         PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
-        if frame not in BPENO:
+        if frame in BPENO:
             continue
         else:
             #Récupération du champ BPE
