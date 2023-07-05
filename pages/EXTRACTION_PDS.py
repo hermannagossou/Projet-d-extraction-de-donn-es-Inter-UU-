@@ -22,11 +22,11 @@ if uploaded_file is not None:
     STATUT=[]
     CABLE=[]
     BPE=[]
-    EXECPTION=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
+    BPENO=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
     
     for frame in df_dict:
       PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
-      if frame not in EXCEPTION:
+      if frame not in BPENO:
           continue
       else:
           #Récupération du champ BPE
