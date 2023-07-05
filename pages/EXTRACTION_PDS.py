@@ -22,7 +22,7 @@ if uploaded_file is not None:
     STATUT=[]
     CABLE=[]
     BPE=[]
-    EXECPTION=['BPESOUI',BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
+    EXECPTION=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
     
     for frame in df_dict:
       PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
