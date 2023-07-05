@@ -94,26 +94,26 @@ if uploaded_file is not None:
                 elif str(cable)=='Câble':
                     CABLE.append(PDS[index_cable+2])
       
-        ELEMENT_serie=pd.Series(ELEMENT).reset_index(drop=True)
-        LIEN_serie=pd.Series(LIEN).reset_index(drop=True)
-        ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
-        CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
-        TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
-        POCHE_serie=pd.Series(POCHE).reset_index(drop=True)
-        STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
-        CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
-        BPE_serie=pd.Series(BPE).reset_index(drop=True)
+    ELEMENT_serie=pd.Series(ELEMENT).reset_index(drop=True)
+    LIEN_serie=pd.Series(LIEN).reset_index(drop=True)
+    ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
+    CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
+    TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
+    POCHE_serie=pd.Series(POCHE).reset_index(drop=True)
+    STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
+    CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
+    BPE_serie=pd.Series(BPE).reset_index(drop=True)
         
-        df_out=pd.concat([ELEMENT_serie,LIEN_serie,POCHE_serie,BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
-        df_out=df_out.rename(columns={0:'ELEMENT',1:'LIEN',2:'POCHE',3:'BPEU',4:'CHAMBRE',5:'ADRESSE',6:'TYPE',7:'STATUT',8:'CABLE'})
+    df_out=pd.concat([ELEMENT_serie,LIEN_serie,POCHE_serie,BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
+    df_out=df_out.rename(columns={0:'ELEMENT',1:'LIEN',2:'POCHE',3:'BPEU',4:'CHAMBRE',5:'ADRESSE',6:'TYPE',7:'STATUT',8:'CABLE'})
     
-        st.subheader('PLAN DE SYNOPTIQUE')
-        st.write(df_out)
-        csv=convert_df(df_out)
+    st.subheader('PLAN DE SYNOPTIQUE')
+    st.write(df_out)
+    csv=convert_df(df_out)
     
-        st.download_button(
-            label='Télécharger',
-            data=csv,
-            file_name='PDS_out.csv',
-            mime='text/csv'
-        )
+    st.download_button(
+        label='Télécharger',
+        data=csv,
+        file_name='PDS_out.csv',
+        mime='text/csv'
+    )
