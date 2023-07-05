@@ -22,74 +22,77 @@ if uploaded_file is not None:
     STATUT=[]
     CABLE=[]
     BPE=[]
+    EXECPTION=['BPESOUI',BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
     
     for frame in df_dict:
       PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
-    
-      #Récupération du champ BPE
-      for index_bpe,bpe in enumerate(PDS):
-        if index_bpe not in range(len(PDS)):
+      if frame not in EXCEPTION:
           continue
-        elif bpe=='ADRESSE / N° CHAMBRE':
-          BPE.append(PDS[index_bpe-1])
-    
-      # Récupération Champ Element
-      for index_element,element in enumerate(PDS):
-        if index_element not in range(len(PDS)):
-          continue
-        elif str(element)=='Elément':
-          ELEMENT.append(PDS[index_element+1])
-    
-      # Récupération Champ Lien
-      for index_lien,lien in enumerate(PDS):
-        if index_lien not in range(len(PDS)):
-          continue
-        elif str(lien)=='Lien':
-          LIEN.append(PDS[index_lien+1])
-    
-      # Récupération Champ Adresse
-      for index_adresse,adresse in enumerate(PDS):
-        if index_adresse not in range(len(PDS)):
-          continue
-        elif str(adresse)=='ADRESSE / N° CHAMBRE':
-          ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
-    
-      # Récupération Champ Chambre
-      for index_chambre,chambre in enumerate(PDS):
-        if index_chambre not in range(len(PDS)):
-          continue
-        elif str(chambre)=='ADRESSE / N° CHAMBRE':
-          CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
-    
-      # Récupération Champ Type BPE
-      for index_type,type in enumerate(PDS):
-        if index_type not in range(len(PDS)):
-          break
-        elif str(type)=='TYPE DE BPE':
-          TYPE.append(PDS[index_type+1])
-    
-      # Récupération Champ Poche
-      for index_poche,poche in enumerate(PDS):
-        if index_poche not in range(len(PDS)):
-          continue
-        elif str(poche)=='POCHE':
-          POCHE.append(PDS[index_poche+1])
-    
-      # Récupération Champ Satut
-      for index_statut,statut in enumerate(PDS):
-        if index_statut not in range(len(PDS)):
-          continue
-        elif str(statut)=='CSE_01' and PDS[index_statut+1]=='EPISSUREE':
-          STATUT.append('JOINT DROIT')
-        elif str(statut)=='CSE_24' and PDS[index_statut+1]=='PASSAGE':
-          STATUT.append('PASSAGE')
-    
-      # Récupération Champ Cable
-      for index_cable,cable in enumerate(PDS):
-        if index_cable not in range(len(PDS)):
-          continue
-        elif str(cable)=='Câble':
-          CABLE.append(PDS[index_cable+2])
+      else:
+          #Récupération du champ BPE
+          for index_bpe,bpe in enumerate(PDS):
+            if index_bpe not in range(len(PDS)):
+              continue
+            elif bpe=='ADRESSE / N° CHAMBRE':
+              BPE.append(PDS[index_bpe-1])
+        
+          # Récupération Champ Element
+          for index_element,element in enumerate(PDS):
+            if index_element not in range(len(PDS)):
+              continue
+            elif str(element)=='Elément':
+              ELEMENT.append(PDS[index_element+1])
+        
+          # Récupération Champ Lien
+          for index_lien,lien in enumerate(PDS):
+            if index_lien not in range(len(PDS)):
+              continue
+            elif str(lien)=='Lien':
+              LIEN.append(PDS[index_lien+1])
+        
+          # Récupération Champ Adresse
+          for index_adresse,adresse in enumerate(PDS):
+            if index_adresse not in range(len(PDS)):
+              continue
+            elif str(adresse)=='ADRESSE / N° CHAMBRE':
+              ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
+        
+          # Récupération Champ Chambre
+          for index_chambre,chambre in enumerate(PDS):
+            if index_chambre not in range(len(PDS)):
+              continue
+            elif str(chambre)=='ADRESSE / N° CHAMBRE':
+              CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
+        
+          # Récupération Champ Type BPE
+          for index_type,type in enumerate(PDS):
+            if index_type not in range(len(PDS)):
+              break
+            elif str(type)=='TYPE DE BPE':
+              TYPE.append(PDS[index_type+1])
+        
+          # Récupération Champ Poche
+          for index_poche,poche in enumerate(PDS):
+            if index_poche not in range(len(PDS)):
+              continue
+            elif str(poche)=='POCHE':
+              POCHE.append(PDS[index_poche+1])
+        
+          # Récupération Champ Satut
+          for index_statut,statut in enumerate(PDS):
+            if index_statut not in range(len(PDS)):
+              continue
+            elif str(statut)=='CSE_01' and PDS[index_statut+1]=='EPISSUREE':
+              STATUT.append('JOINT DROIT')
+            elif str(statut)=='CSE_24' and PDS[index_statut+1]=='PASSAGE':
+              STATUT.append('PASSAGE')
+        
+          # Récupération Champ Cable
+          for index_cable,cable in enumerate(PDS):
+            if index_cable not in range(len(PDS)):
+              continue
+            elif str(cable)=='Câble':
+              CABLE.append(PDS[index_cable+2])
       
     ELEMENT=pd.Series(ELEMENT).reset_index(drop=True)
     LIEN=pd.Series(LIEN).reset_index(drop=True)
