@@ -48,12 +48,11 @@ if uploaded_file is not None:
                 TYPE.append(type)
         
             # Récupération Champ Satut
-            for index_statut,statut in enumerate(PDS):
-                if index_statut not in range(len(PDS)):
-                    continue
-                elif str(statut)=='CSE_01' and PDS[index_statut+1]=='EPISSUREE':
+            STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|PASSAGE',na=False)].drop_duplicates()
+            for statut in STATUT_CHAINE:
+                if statut=='EPISSURE':
                     STATUT.append('JOINT DROIT')
-                elif str(statut)=='CSE_24' and PDS[index_statut+1]=='PASSAGE':
+                elif statut=='PASSAGE':
                     STATUT.append('PASSAGE')
         
             # Récupération Champ Cable
