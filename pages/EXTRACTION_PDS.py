@@ -43,11 +43,9 @@ if uploaded_file is not None:
                 CHAMBRE.append(chambre.split('/')[1].strip())
         
             # Récupération Champ Type BPE
-            for index_type,type in enumerate(PDS):
-                if index_type not in range(len(PDS)):
-                    continue
-                elif str(type)=='TYPE DE BPE':
-                    TYPE.append(PDS[index_type+1])
+            TYPE_CHAINE=PDS[PDS.str.contains('FR6',na=False)]
+            for type in TYPE_CHAINE:
+                TYPE.append(type)
         
             # Récupération Champ Satut
             for index_statut,statut in enumerate(PDS):
