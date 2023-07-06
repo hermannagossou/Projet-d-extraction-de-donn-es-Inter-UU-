@@ -117,5 +117,3 @@ if uploaded_file is not None:
         file_name='PDS_out.csv',
         mime='text/csv'
     )
-
-st.write(len(PDS))
