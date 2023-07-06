@@ -33,11 +33,9 @@ if uploaded_file is not None:
                     BPE.append(bpe)
         
             # Récupération Champ Adresse
-            for index_adresse,adresse in enumerate(PDS):
-                if index_adresse not in range(len(PDS)):
-                    continue
-                elif str(adresse)=='ADRESSE / N° CHAMBRE':
-                    ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
+            ADRESSE_CHAINE=PDS[PDS.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
+            for adresse in ADRESSE_CHAINE:
+                ADRESSE.append(adresse.split('/')[0].strip())
         
             # Récupération Champ Chambre
             for index_chambre,chambre in enumerate(PDS):
