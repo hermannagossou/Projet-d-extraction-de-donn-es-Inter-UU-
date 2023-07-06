@@ -36,20 +36,6 @@ if uploaded_file is not None:
                 elif bpe=='ADRESSE / N° CHAMBRE':
                     BPE.append(PDS[index_bpe-1])
         
-            # Récupération Champ Element
-            for index_element,element in enumerate(PDS):
-                if index_element not in range(len(PDS)):
-                    continue
-                elif str(element)=='Elément':
-                    ELEMENT.append(PDS[index_element+1])
-        
-            # Récupération Champ Lien
-            for index_lien,lien in enumerate(PDS):
-                if index_lien not in range(len(PDS)):
-                    continue
-                elif str(lien)=='Lien':
-                    LIEN.append(PDS[index_lien+1])
-        
             # Récupération Champ Adresse
             for index_adresse,adresse in enumerate(PDS):
                 if index_adresse not in range(len(PDS)):
@@ -70,13 +56,6 @@ if uploaded_file is not None:
                     continue
                 elif str(type)=='TYPE DE BPE':
                     TYPE.append(PDS[index_type+1])
-        
-            # Récupération Champ Poche
-            for index_poche,poche in enumerate(PDS):
-                if index_poche not in range(len(PDS)):
-                    continue
-                elif str(poche)=='POCHE':
-                    POCHE.append(PDS[index_poche+1])
         
             # Récupération Champ Satut
             for index_statut,statut in enumerate(PDS):
