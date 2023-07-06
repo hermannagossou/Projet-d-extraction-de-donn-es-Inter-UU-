@@ -13,12 +13,10 @@ uploaded_file = st.file_uploader("Choisissez un fichier")
 
 if uploaded_file is not None:
     df_dict = pd.read_excel(uploaded_file,sheet_name=None)
-    ELEMENT=[]
-    LIEN=[]
+
     ADRESSE=[]
     CHAMBRE=[]
     TYPE=[]
-    POCHE=[]
     STATUT=[]
     CABLE=[]
     BPE=[]
@@ -72,13 +70,10 @@ if uploaded_file is not None:
                     continue
                 elif str(cable)=='Câble':
                     CABLE.append(PDS[index_cable+2])
-      
-    ELEMENT_serie=pd.Series(ELEMENT).reset_index(drop=True)
-    LIEN_serie=pd.Series(LIEN).reset_index(drop=True)
+    
     ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
     CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
     TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
-    POCHE_serie=pd.Series(POCHE).reset_index(drop=True)
     STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
     CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
     BPE_serie=pd.Series(BPE).reset_index(drop=True)
