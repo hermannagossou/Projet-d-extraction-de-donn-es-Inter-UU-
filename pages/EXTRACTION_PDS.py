@@ -33,7 +33,7 @@ if uploaded_file is not None:
             for index_bpe,bpe in enumerate(PDS):
                 if index_bpe not in range(len(PDS)):
                     continue
-                elif bpe=='ADRESSE / N° CHAMBRE':
+                elif bpe=='ADRESSE / N° CHAMBRE' or bpe=='REFERENCE FIDS':
                     BPE.append(PDS[index_bpe-1])
         
             # Récupération Champ Element
