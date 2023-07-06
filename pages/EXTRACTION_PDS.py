@@ -45,7 +45,7 @@ if uploaded_file is not None:
                     continue
                 elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_chambre+1]:
                     CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
-                else:
+                elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' not in PDS[index_chambre+1]:
                     CHAMBRE.append(PDS[index_chambre+1])
         
             # Récupération Champ Type BPE
