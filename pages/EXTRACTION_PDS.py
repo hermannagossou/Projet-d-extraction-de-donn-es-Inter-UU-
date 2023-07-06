@@ -37,14 +37,14 @@ if uploaded_file is not None:
                 if index_adresse not in range(len(PDS)):
                     continue
                 elif str(adresse)=='ADRESSE / N° CHAMBRE':
-                    ADRESSE.append(adresse.split('/')[0].strip())
+                    ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
         
             # Récupération Champ Chambre
             for index_chambre, chambre in enumerate(PDS):
                 if index_chambre not in range(len(PDS)):
                     continue
                 elif str(chambre)=='ADRESSE / N° CHAMBRE':
-                    CHAMBRE.append(chambre.split('/')[1].strip())
+                    CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
         
             # Récupération Champ Type BPE
             TYPE_CHAINE=PDS[PDS.str.contains('HD$|FR6$',na=False)]
