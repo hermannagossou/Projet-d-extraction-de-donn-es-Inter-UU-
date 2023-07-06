@@ -31,8 +31,8 @@ if uploaded_file is not None:
             for index_bpe,bpe in enumerate(PDS):
                 if index_bpe not in range(len(PDS)):
                     continue
-                elif bpe=='ADRESSE / N° CHAMBRE':
-                    BPE.append(PDS[index_bpe-1])
+                elif str(bpe).startswith('BPEU'):
+                    BPE.append(bpe)
         
             # Récupération Champ Adresse
             for index_adresse,adresse in enumerate(PDS):
