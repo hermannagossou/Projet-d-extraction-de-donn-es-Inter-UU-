@@ -28,7 +28,7 @@ if uploaded_file is not None:
             continue
         else:
             #Récupération du champ BPE
-            BPE_CHAINE=PDS[PDS.str.contains('BPEU[0-9]',na=False)]
+            BPE_CHAINE=PDS[PDS.str.contains('BPEU[0-9]',na=False)].drop_duplicates()
             for bpe in BPE_CHAINE:
                 BPE.append(bpe)
         
