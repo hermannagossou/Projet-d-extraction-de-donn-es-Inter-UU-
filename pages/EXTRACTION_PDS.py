@@ -56,11 +56,9 @@ if uploaded_file is not None:
                     STATUT.append('PASSAGE')
         
             # Récupération Champ Cable
-            for index_cable,cable in enumerate(PDS):
-                if index_cable not in range(len(PDS)):
-                    continue
-                elif str(cable)=='Câble':
-                    CABLE.append(PDS[index_cable+2])
+            CABLE_CHAINE=PDS[PDS.str.contains('CIU',na=False)]
+            for cable in CABLE_CHAINE:
+                CABLE.append(cable)
     
     ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
     CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
