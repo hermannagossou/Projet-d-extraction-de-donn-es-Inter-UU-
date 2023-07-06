@@ -89,7 +89,7 @@ if uploaded_file is not None:
         
             # Récupération Champ Cable
             for index_cable,cable in enumerate(PDS):
-                if index_cable not in range(len(PDS)):
+                if index_cable-1 not in range(len(PDS)):
                     continue
                 elif str(cable)=='Câble':
                     CABLE.append(PDS[index_cable+2])
