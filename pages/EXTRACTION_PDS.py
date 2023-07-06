@@ -78,8 +78,8 @@ if uploaded_file is not None:
     CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
     BPE_serie=pd.Series(BPE).reset_index(drop=True)
         
-    df_out=pd.concat([ELEMENT_serie,LIEN_serie,POCHE_serie,BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
-    df_out=df_out.rename(columns={0:'ELEMENT',1:'LIEN',2:'POCHE',3:'BPEU',4:'CHAMBRE',5:'ADRESSE',6:'TYPE',7:'STATUT',8:'CABLE'})
+    df_out=pd.concat([BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
+    df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
     
     st.subheader('PLAN DE SYNOPTIQUE')
     st.write(df_out)
