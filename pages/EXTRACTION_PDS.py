@@ -48,7 +48,7 @@ if uploaded_file is not None:
                 TYPE.append(type)
         
             # Récupération Champ Satut
-            STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|PASSAGE',na=False)].drop_duplicates()
+            STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
             for statut in STATUT_CHAINE:
                 if statut=='EPISSURE':
                     STATUT.append('JOINT DROIT')
