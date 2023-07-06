@@ -118,4 +118,4 @@ if uploaded_file is not None:
         mime='text/csv'
     )
 
-print(len(PDS))
+st.write(len(PDS))
