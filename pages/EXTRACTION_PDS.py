@@ -28,10 +28,8 @@ if uploaded_file is not None:
             continue
         else:
             #Récupération du champ BPE
-            for index_bpe,bpe in enumerate(PDS):
-                if index_bpe not in range(len(PDS)):
-                    continue
-                elif str(bpe).startswith('BPEU'):
+            for bpe in PDS:
+                if str(bpe).startswith('BPEU'):
                     BPE.append(bpe)
         
             # Récupération Champ Adresse
