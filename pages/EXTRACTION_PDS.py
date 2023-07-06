@@ -52,6 +52,8 @@ if uploaded_file is not None:
             for statut in STATUT_CHAINE:
                 if statut=='EPISSURE':
                     STATUT.append('JOINT DROIT')
+                elif statut=='EPISSUREE':
+                    STATUT.append('JOINT DROIT')
                 elif statut=='PASSAGE':
                     STATUT.append('PASSAGE')
         
