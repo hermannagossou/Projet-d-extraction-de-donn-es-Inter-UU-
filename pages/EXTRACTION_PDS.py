@@ -36,8 +36,6 @@ if uploaded_file is not None:
                     continue
                 elif str(adresse)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_adresse+1]:
                     ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
-                else:
-                    ADRESSE.append('')
         
             # Récupération Champ Chambre
             for index_chambre, chambre in enumerate(PDS):
