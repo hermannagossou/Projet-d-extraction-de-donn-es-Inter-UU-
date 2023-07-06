@@ -29,11 +29,11 @@ if uploaded_file is not None:
         else:
             #Récupération du champ BPE
             for bpe in PDS:
-                if str(bpe).startswith('BPEU'):
+                if str(bpe).startswith('BPEU[0-9]'):
                     BPE.append(bpe)
         
             # Récupération Champ Adresse
-            ADRESSE_CHAINE=PDS[PDS.str.contains('[^ADRESSE][A-Za-z0-9ÉÈéè-]+\s*\/\s*[A-Z0-9_]+',na=False)]
+            ADRESSE_CHAINE=PDS[PDS.str.contains('[^ADRESSE][^CITE A][A-Za-z0-9ÉÈéè-]+\s*\/\s*[A-Z0-9_]+',na=False)]
             for adresse in ADRESSE_CHAINE:
                 ADRESSE.append(adresse.split('/')[0].strip())
         
