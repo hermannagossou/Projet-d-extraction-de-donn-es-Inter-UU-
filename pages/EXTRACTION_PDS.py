@@ -33,14 +33,18 @@ if uploaded_file is not None:
                 BPE.append(bpe)
         
             # Récupération Champ Adresse
-            ADRESSE_CHAINE=PDS[PDS.str.contains('[^ADRESSE][CITE A][CITE B][A-Za-z0-9ÉÈéè-]+\s*\/\s*[A-Z0-9_]+',na=False)]
-            for adresse in ADRESSE_CHAINE:
-                ADRESSE.append(adresse.split('/')[0].strip())
+            for index_adresse, adresse in PDS:
+                if index_adresse not in range(len(PDS)):
+                    continue
+                elif str(adresse)=='ADRESSE / N° CHAMBRE':
+                    ADRESSE.append(adresse.split('/')[0].strip())
         
             # Récupération Champ Chambre
-            CHAMBRE_CHAINE=PDS[PDS.str.contains('[^ADRESSE][A-Za-z0-9ÉÈéè-]+\s*\/\s*[A-Z0-9_]+',na=False)]
-            for chambre in CHAMBRE_CHAINE:
-                CHAMBRE.append(chambre.split('/')[1].strip())
+            for index_chambre, chambre in PDS:
+                if index_chambre not in range(len(PDS)):
+                    continue
+                elif str(chambre)=='ADRESSE / N° CHAMBRE':
+                    CHAMBRE.append(chambre.split('/')[1].strip())
         
             # Récupération Champ Type BPE
             TYPE_CHAINE=PDS[PDS.str.contains('HD$|FR6$',na=False)]
