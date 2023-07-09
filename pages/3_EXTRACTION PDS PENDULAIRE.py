@@ -31,7 +31,7 @@ if uploaded_file is not None:
         ADRESSE.append(str(PDS[2].strip())+' ')
 
         st.write(PDS)
-        st.write(PDS[2])
+        st.write(PDS[3])
 
 
 st.write(BPE)
