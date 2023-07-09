@@ -28,7 +28,7 @@ if uploaded_file is not None:
         BPE.append(PDS[0].strip())
 
         #Récupération Champ Adresse
-        ADRESSE.append(PDS[2].strip()+'')
+        ADRESSE.append(PDS[2].strip()+' ')
 
 
 st.write(BPE)
