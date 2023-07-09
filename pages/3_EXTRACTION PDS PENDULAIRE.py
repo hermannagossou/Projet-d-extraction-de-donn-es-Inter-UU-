@@ -38,6 +38,11 @@ if uploaded_file is not None:
         # Recupération Champ Statut
         STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
 
+        # Récupération Champ Cable
+        CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CAD',na=False)]
+        for cable in CABLE_CHAINE:
+            CABLE.append(cable)
+
 
 st.write(BPE)
 st.write(ADRESSE)
