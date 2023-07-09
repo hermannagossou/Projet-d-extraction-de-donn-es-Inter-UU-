@@ -28,6 +28,6 @@ if uploaded_file is not None:
         BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]',na=False)])
         
         st.write(PDS)
-        st.wrtite(PDS.iloc[0])
+        st.wrtite(PDS[0])
 
 st.write(BPE)
