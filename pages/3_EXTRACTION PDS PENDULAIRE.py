@@ -49,7 +49,7 @@ if uploaded_file is not None:
     BPE_serie=pd.Series(BPE).reset_index(drop=True)
 
     df_out=pd.concat([BPE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
-    df_out=df_out.rename(columns={0:'BPEU',1:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
+    df_out=df_out.rename(columns={0:'BPEU',1:'ADRESSE',2:'TYPE',3:'STATUT',4:'CABLE'})
     
     st.subheader('PLAN DE SOUDURE')
     st.write(df_out)
