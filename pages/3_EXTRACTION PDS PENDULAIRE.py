@@ -30,6 +30,10 @@ if uploaded_file is not None:
         #Récupération Champ Adresse
         ADRESSE.append(str(PDS[2].strip())+' '+str(PDS[3])+' '+str(PDS[4].strip()))
 
+        # Récupération Champ Type BPE
+        TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$',na=False)]
+        for type in TYPE_CHAINE:
+            TYPE.append(type)
 
         
 
