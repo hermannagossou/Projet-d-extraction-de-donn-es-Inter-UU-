@@ -35,7 +35,8 @@ if uploaded_file is not None:
         for type in TYPE_CHAINE:
             TYPE.append(type)
 
-        
+        # Recupération Champ Statut
+        STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
 
 
 st.write(BPE)
