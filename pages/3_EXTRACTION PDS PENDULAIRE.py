@@ -27,4 +27,4 @@ if uploaded_file is not None:
         #Récupération du champ BPE
         BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]',na=False)])
         
-        st.write(BPE)
+        st.write(PDS)
