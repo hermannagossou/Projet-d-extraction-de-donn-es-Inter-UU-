@@ -15,7 +15,6 @@ if uploaded_file is not None:
     df_dict = pd.read_excel(uploaded_file,sheet_name=None)
 
     ADRESSE=[]
-    CHAMBRE=[]
     TYPE=[]
     STATUT=[]
     CABLE=[]
@@ -43,7 +42,22 @@ if uploaded_file is not None:
         for cable in CABLE_CHAINE:
             CABLE.append(cable)
 
+    ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
+    TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
+    STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
+    CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
+    BPE_serie=pd.Series(BPE).reset_index(drop=True)
 
-st.write(BPE)
-st.write(ADRESSE)
-st.write(TYPE)
+    df_out=pd.concat([BPE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
+    df_out=df_out.rename(columns={0:'BPEU',1:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
+    
+    st.subheader('PLAN DE SOUDURE')
+    st.write(df_out)
+    csv=convert_df(df_out)
+    
+    st.download_button(
+        label='Télécharger',
+        data=csv,
+        file_name='PDS_out.csv',
+        mime='text/csv'
+    )
