@@ -36,6 +36,8 @@ if uploaded_file is not None:
 
         # Recupération Champ Statut
         STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
+        for statut in STATUT_CHAINE:
+            STATUT.append(statut)
 
         # Récupération Champ Cable
         CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CAD',na=False)]
@@ -44,7 +46,7 @@ if uploaded_file is not None:
 
     ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
     TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
-    STATUT_serie=pd.Series(STATUT_CHAINE).reset_index(drop=True)
+    STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
     CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
     BPE_serie=pd.Series(BPE).reset_index(drop=True)
 
