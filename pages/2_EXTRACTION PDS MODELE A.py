@@ -7,7 +7,7 @@ import numpy as np
 def convert_df(df):
     return df.to_csv().encode('utf-8')
 
-st.title('EXTRACTION PDS DORSALE')
+st.title('EXTRACTION PDS MODELE A')
 
 uploaded_file = st.file_uploader("Choisissez un fichier")
 
@@ -28,7 +28,7 @@ if uploaded_file is not None:
             continue
         else:
             #Récupération du champ BPE
-            BPE.append(PDS[PDS.str.contains('BPEU[0-9]',na=False)].iloc[0])
+            BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]|BPEI[0-9]',na=False)].iloc[0])
         
             # Récupération Champ Adresse
             for index_adresse, adresse in enumerate(PDS):
@@ -62,7 +62,7 @@ if uploaded_file is not None:
                     STATUT.append('PASSAGE')
         
             # Récupération Champ Cable
-            CABLE_CHAINE=PDS[PDS.str.contains('CIU',na=False)]
+            CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CIC',na=False)]
             for cable in CABLE_CHAINE:
                 CABLE.append(cable)
     
