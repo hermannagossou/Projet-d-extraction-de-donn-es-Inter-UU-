@@ -76,7 +76,7 @@ if uploaded_file is not None:
     df_out=pd.concat([BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
     df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
     
-    st.subheader('PLAN DE SYNOPTIQUE')
+    st.subheader('PLAN DE SOUDURE')
     st.write(df_out)
     csv=convert_df(df_out)
     
