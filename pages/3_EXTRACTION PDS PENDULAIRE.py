@@ -25,9 +25,10 @@ if uploaded_file is not None:
         PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
         
         #Récupération du champ BPE
-        BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]',na=False)])
-        
-        st.write(PDS)
-        st.write(PDS[0])
+        BPE.append(PDS[0])
+
+        #Récupération Champ Adresse
+        ADRESSE.append(PDS[2]+' '+PDS[3]+' '+PDS[4])
+
 
 st.write(BPE)
