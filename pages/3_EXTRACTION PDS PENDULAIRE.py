@@ -30,9 +30,13 @@ if uploaded_file is not None:
         #Récupération Champ Adresse
         ADRESSE.append(str(PDS[2].strip())+' '+str(PDS[3])+' '+str(PDS[4].strip()))
 
+        #Récupération Modele de boites
+        TYPE.append(str(PDS[524].strip()))
+
         st.write(PDS)
         
 
 
 st.write(BPE)
 st.write(ADRESSE)
+st.write(TYPE)
