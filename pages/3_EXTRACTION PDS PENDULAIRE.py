@@ -20,69 +20,66 @@ if uploaded_file is not None:
     STATUT=[]
     CABLE=[]
     BPE=[]
-    BPENO=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
     
     for frame in df_dict:
         PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
-        if frame in BPENO:
-            continue
-        else:
-            #Récupération du champ BPE
-            BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]',na=False)])
         
-            # Récupération Champ Adresse
-            for index_adresse, adresse in enumerate(PDS):
-                if index_adresse not in range(len(PDS)):
-                    continue
-                elif str(adresse)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_adresse+1]:
-                    ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
+        #Récupération du champ BPE
+        BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]',na=False)])
         
-            # Récupération Champ Chambre
-            for index_chambre, chambre in enumerate(PDS):
-                if index_chambre not in range(len(PDS)):
-                    continue
-                elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_chambre+1]:
-                    CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
-                elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' not in PDS[index_chambre+1]:
-                    CHAMBRE.append(PDS[index_chambre+1])
+        # Récupération Champ Adresse
+        for index_adresse, adresse in enumerate(PDS):
+            if index_adresse not in range(len(PDS)):
+                continue
+            elif str(adresse)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_adresse+1]:
+                ADRESSE.append(PDS[index_adresse+1].split('/')[0].strip())
         
-            # Récupération Champ Type BPE
-            TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$',na=False)]
-            for type in TYPE_CHAINE:
-                TYPE.append(type)
+        # Récupération Champ Chambre
+        for index_chambre, chambre in enumerate(PDS):
+            if index_chambre not in range(len(PDS)):
+                continue
+            elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' in PDS[index_chambre+1]:
+                CHAMBRE.append(PDS[index_chambre+1].split('/')[1].strip())
+            elif str(chambre)=='ADRESSE / N° CHAMBRE' and '/' not in PDS[index_chambre+1]:
+                CHAMBRE.append(PDS[index_chambre+1])
         
-            # Récupération Champ Satut
-            STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
-            for statut in STATUT_CHAINE:
-                if statut=='EPISSURE':
-                    STATUT.append('JOINT DROIT')
-                elif statut=='EPISSUREE':
-                    STATUT.append('JOINT DROIT')
-                elif statut=='PASSAGE':
-                    STATUT.append('PASSAGE')
+        # Récupération Champ Type BPE
+        TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$',na=False)]
+        for type in TYPE_CHAINE:
+            TYPE.append(type)
         
-            # Récupération Champ Cable
-            CABLE_CHAINE=PDS[PDS.str.contains('CIU',na=False)]
-            for cable in CABLE_CHAINE:
-                CABLE.append(cable)
+        # Récupération Champ Satut
+        STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
+        for statut in STATUT_CHAINE:
+            if statut=='EPISSURE':
+                STATUT.append('JOINT DROIT')
+            elif statut=='EPISSUREE':
+                STATUT.append('JOINT DROIT')
+            elif statut=='PASSAGE':
+                STATUT.append('PASSAGE')
+        
+        # Récupération Champ Cable
+        CABLE_CHAINE=PDS[PDS.str.contains('CIU',na=False)]
+        for cable in CABLE_CHAINE:
+            CABLE.append(cable)
     
-    ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
-    CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
-    TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
-    STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
-    CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
-    BPE_serie=pd.Series(BPE).reset_index(drop=True)
+ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
+CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
+TYPE_serie=pd.Series(TYPE).reset_index(drop=True)
+STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
+CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
+BPE_serie=pd.Series(BPE).reset_index(drop=True)
         
-    df_out=pd.concat([BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
-    df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
+df_out=pd.concat([BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
+df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
     
-    st.subheader('PLAN DE SOUDURE')
-    st.write(df_out)
-    csv=convert_df(df_out)
+st.subheader('PLAN DE SOUDURE')
+st.write(df_out)
+csv=convert_df(df_out)
     
-    st.download_button(
-        label='Télécharger',
-        data=csv,
-        file_name='PDS_out.csv',
-        mime='text/csv'
-    )
+st.download_button(
+    label='Télécharger',
+    data=csv,
+    file_name='PDS_out.csv',
+    mime='text/csv'
+)
