@@ -31,7 +31,7 @@ if uploaded_file is not None:
         ADRESSE.append(str(PDS[2].strip())+' '+str(PDS[3])+' '+str(PDS[4].strip()))
 
         #Récupération Modele de boites
-        TYPE.append(str(PDS[524].strip()))
+        TYPE.append(PDS[524])
 
         st.write(PDS)
         
