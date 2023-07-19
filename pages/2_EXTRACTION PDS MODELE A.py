@@ -64,7 +64,7 @@ if uploaded_file is not None:
             # Récupération Champ Cable
             CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CIC',na=False)]
             for cable in CABLE_CHAINE:
-                CABLE.append(cable)
+                CABLE.append(cable.strip())
     
     ADRESSE_serie=pd.Series(ADRESSE).reset_index(drop=True)
     CHAMBRE_serie=pd.Series(CHAMBRE).reset_index(drop=True)
