@@ -49,7 +49,7 @@ if uploaded_file is not None:
             # Récupération Champ Type BPE
             TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$',na=False)]
             for type in TYPE_CHAINE:
-                TYPE.append(type)
+                TYPE.append(type.strip())
         
             # Récupération Champ Satut
             STATUT_CHAINE=PDS[PDS.str.contains('EPISSURE|EPISSUREE|PASSAGE',na=False)].drop_duplicates()
