@@ -46,6 +46,8 @@ if uploaded_file is not None:
                         continue
                     elif str(adresse).startswith('T'):
                         continue
+                    elif '\n' in adresse:
+                        ADRESSE_FINAL.append(adresse[1].split('\n')[0]+adresse[1].split('\n')[1])
                     else:
                         ADRESSE_FINAL.append(adresse)
 
