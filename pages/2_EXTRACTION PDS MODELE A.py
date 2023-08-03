@@ -20,6 +20,7 @@ if uploaded_file is not None:
     STATUT=[]
     CABLE=[]
     BPE=[]
+    ELEMENT=[]
     BPENO=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
     
     for frame in df_dict:
@@ -27,6 +28,13 @@ if uploaded_file is not None:
         if frame in BPENO:
             continue
         else:
+            # Récupération Champ Element
+            for index_element,element in enumerate(PDS):
+                if index_element not in range(len(PDS)):
+                  continue
+                elif str(element)=='Elément':
+                  ELEMENT.append(PDS[index_element+1])
+            
             #Récupération du champ BPE
             BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]|BPEI[0-9]',na=False)].iloc[0])
         
@@ -72,9 +80,10 @@ if uploaded_file is not None:
     STATUT_serie=pd.Series(STATUT).reset_index(drop=True)
     CABLE_serie=pd.Series(CABLE).drop_duplicates().reset_index(drop=True)
     BPE_serie=pd.Series(BPE).reset_index(drop=True)
+    ELEMENT_serie=pd.Series(ELEMENT).reset_index(drop=True)
         
-    df_out=pd.concat([BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
-    df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
+    df_out=pd.concat([ELEMENT_serie,BPE_serie,CHAMBRE_serie,ADRESSE_serie,TYPE_serie,STATUT_serie,CABLE_serie],axis=1)
+    df_out=df_out.rename(columns={0:'Element',1:'BPEU',2:'CHAMBRE',3:'ADRESSE',4:'TYPE',5:'STATUT',6:'CABLE'})
     
     st.subheader('PLAN DE SOUDURE')
     st.write(df_out)
