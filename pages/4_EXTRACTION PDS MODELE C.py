@@ -26,7 +26,7 @@ if uploaded_file is not None:
       PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
 
       #Récupération du champ BPE
-      for index_bpe,bpe in enumarate(PDS):
+      for index_bpe,bpe in enumerate(PDS):
           if bpe=='BPE Aval':
               BPE.append(PDS[index_bpe])
     
