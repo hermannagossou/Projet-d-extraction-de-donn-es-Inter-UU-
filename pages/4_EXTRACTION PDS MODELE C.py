@@ -26,7 +26,9 @@ if uploaded_file is not None:
       PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
 
       #Récupération du champ BPE
-      BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]|BPEI[0-9]',na=False)].iloc[0])
+      for index_bpe,bpe in enumarate(PDS):
+          if bpe=='BPE Aval':
+              BPE.append(PDS[index_bpe])
     
       #Récupération du champ Chambre
       CHAMBRE_CHAINE=PDS[PDS.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
