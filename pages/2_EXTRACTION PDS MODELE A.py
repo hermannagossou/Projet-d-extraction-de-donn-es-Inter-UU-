@@ -88,7 +88,7 @@ if uploaded_file is not None:
     df_out=df_out.rename(columns={0:'Element',1:'BPEU',2:'CHAMBRE',3:'ADRESSE',4:'TYPE',5:'STATUT',6:'CABLE'})
     
     st.subheader('PLAN DE SOUDURE')
-    st.write(df_out)
+    #st.write(df_out)
     csv=convert_df(df_out)
     
     st.download_button(
