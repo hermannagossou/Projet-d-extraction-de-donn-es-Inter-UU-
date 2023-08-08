@@ -34,8 +34,8 @@ if uploaded_file is not None:
                   continue
                 elif str(element)=='Elément':
                   ELEMENT.append(PDS[index_element+1])
-                elif str(element)=='Lien Inter-UU':
-                  ELEMENT.append(PDS[index_element+1])
+                elif str(element)=='Lien Inter-UU' and str(element)=='ELEMENT LIEN INTER-UU':
+                  print(index_element)
             
             #Récupération du champ BPE
             BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]|BPEI[0-9]',na=False)].iloc[0])
