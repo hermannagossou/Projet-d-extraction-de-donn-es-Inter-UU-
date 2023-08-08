@@ -34,8 +34,6 @@ if uploaded_file is not None:
                   continue
                 elif str(element)=='Elément':
                   ELEMENT.append(PDS[index_element+1])
-                elif str(element)=='Lien Inter-UU' and str(element)=='ELEMENT LIEN INTER-UU':
-                  print(index_element)
             
             #Récupération du champ BPE
             BPE.append(PDS[PDS.str.contains('BPEU[0-9]|BPEA[0-9]|BPEI[0-9]',na=False)].iloc[0])
@@ -88,8 +86,7 @@ if uploaded_file is not None:
     df_out=df_out.rename(columns={0:'Element',1:'BPEU',2:'CHAMBRE',3:'ADRESSE',4:'TYPE',5:'STATUT',6:'CABLE'})
     
     st.subheader('PLAN DE SOUDURE')
-    st.write(PDS[index_element])
-    #st.write(df_out)
+    st.write(df_out)
     csv=convert_df(df_out)
     
     st.download_button(
