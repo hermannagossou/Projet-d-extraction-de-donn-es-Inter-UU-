@@ -188,20 +188,23 @@ if uploaded_file is not None:
                   else:
                     continue
                 
-                if str(REFSELECT[0]).startswith('F'):
-                  index_ref=CAB.index+3
-                elif str(REFSELECT[1]).startswith('F'):
-                  index_ref=CAB.index+3
-                elif str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F'):
-                  index_ref=CAB.index+3
-                elif str(REFSELECT[len(REFSELECT)-3]).startswith('F'):
-                  index_ref=CAB.index+3
-                elif str(REFSELECT[len(REFSELECT)-2]).startswith('F'):
-                  index_ref=CAB.index+3
-                elif str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
+                if len(REFSELECT)==1:
                   index_ref=CAB.index+3
                 else:
-                  index_ref=CAB.index+2
+                  if str(REFSELECT[0]).startswith('F'):
+                    index_ref=CAB.index+3
+                  elif str(REFSELECT[1]).startswith('F'):
+                    index_ref=CAB.index+3
+                  elif str(REFSELECT[round(len(REFSELECT)/2)]).startswith('F'):
+                    index_ref=CAB.index+3
+                  elif str(REFSELECT[len(REFSELECT)-3]).startswith('F'):
+                    index_ref=CAB.index+3
+                  elif str(REFSELECT[len(REFSELECT)-2]).startswith('F'):
+                    index_ref=CAB.index+3
+                  elif str(REFSELECT[len(REFSELECT)-1]).startswith('F'):
+                    index_ref=CAB.index+3
+                  else:
+                    index_ref=CAB.index+2
 
                 for ref in index_ref:
                   if ref < len(CHAINE):
