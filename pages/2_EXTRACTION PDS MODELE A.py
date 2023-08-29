@@ -21,7 +21,7 @@ if uploaded_file is not None:
     CABLE=[]
     BPE=[]
     ELEMENT=[]
-    BPENO=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON']
+    BPENO=['BPESOUI','BPESNON','BPEDOUI','BPEDNON','BPEAOUI','BPEANON','FOA']
     
     for frame in df_dict:
         PDS=df_dict[frame].unstack().dropna().reset_index(drop=True)
