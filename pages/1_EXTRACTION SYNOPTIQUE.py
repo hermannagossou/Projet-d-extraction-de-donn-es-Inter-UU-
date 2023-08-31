@@ -164,7 +164,12 @@ if uploaded_file is not None:
                         index_cable.append(index_cab+2)
 
                 for ic in index_cable:
-                    CABLE.append(CHAINE[ic])
+                    if CHAINE[ic].startswith('\n'):
+                        CABLE.append(CHAINE[ic].split('\n')[1].strip())
+                    elif CHAINE[ic].endswith('\n'):
+                        CABLE.append(CHAINE[ic].split('\n')[0].strip())
+                    else:
+                        CABLE.append(CHAINE[ic])
 
                 CABLE=pd.Series(CABLE)
 
