@@ -31,7 +31,7 @@ if uploaded_file is not None:
               BPE.append(PDS[index_bpe+1])
     
       #Récupération du champ Chambre
-      CHAMBRE_CHAINE=PDS[PDS.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
+      CHAMBRE_CHAINE=PDS[PDS.str.contains('ORF|BYT|NXL|COL|OPE|NEX|POL|ATC|OPT',na=False)]
       CHAMBRE_CHAINE=CHAMBRE_CHAINE.reset_index(drop=True)
       CHAMBRE.append(CHAMBRE_CHAINE.iloc[0])
     
