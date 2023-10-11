@@ -33,7 +33,7 @@ if uploaded_file is not None:
       #Récupération du champ Chambre
       CHAMBRE_CHAINE=PDS[PDS.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
       CHAMBRE_CHAINE=CHAMBRE_CHAINE.reset_index(drop=True)
-      CHAMBRE.append(CHAMBRE_CHAINE.iloc[0])
+      CHAMBRE.append(CHAMBRE_CHAINE)
     
       #Récupération du champ Adresse
       ADRESSE_CHAINE=PDS[PDS.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
