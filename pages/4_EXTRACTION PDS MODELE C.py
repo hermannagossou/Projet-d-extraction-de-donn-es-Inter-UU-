@@ -77,9 +77,9 @@ if uploaded_file is not None:
     #st.write(df_out)
     csv=convert_df(df_out)
     
-    st.download_button(
-        label='Télécharger',
-        data=csv,
-        file_name='PDS_out.csv',
-        mime='text/csv'
-    )
+    #st.download_button(
+    #    label='Télécharger',
+    #    data=csv,
+    #    file_name='PDS_out.csv',
+    #    mime='text/csv'
+    #)
