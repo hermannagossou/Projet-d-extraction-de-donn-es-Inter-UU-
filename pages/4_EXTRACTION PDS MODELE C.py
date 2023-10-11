@@ -33,6 +33,7 @@ if uploaded_file is not None:
       #Récupération du champ Chambre
       CHAMBRE_CHAINE=PDS[PDS.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
       CHAMBRE_CHAINE=CHAMBRE_CHAINE.reset_index(drop=True)
+      #CHAMBRE.append(CHAMBRE_CHAINE.iloc[0])
       print(CHAMBRE_CHAINE)
     
       #Récupération du champ Adresse
@@ -73,7 +74,7 @@ if uploaded_file is not None:
     df_out=df_out.rename(columns={0:'BPEU',1:'CHAMBRE',2:'ADRESSE',3:'TYPE',4:'STATUT',5:'CABLE'})
     
     st.subheader('PLAN DE SOUDURE')
-    st.write(df_out)
+    #st.write(df_out)
     csv=convert_df(df_out)
     
     st.download_button(
