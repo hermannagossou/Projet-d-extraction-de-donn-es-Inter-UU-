@@ -150,19 +150,21 @@ if uploaded_file is not None:
                         index_cable.append(index_cab+1)
                     elif 'CDD' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
+                    elif 'CBD' in str(CHAINE[index_cab+1]):
+                        index_cable.append(index_cab+1)
                     elif 'CIU' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
                     elif 'CDP' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
                     elif 'CIC' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
-                    elif 'CBD' in str(CHAINE[index_cab+2]):
-                        index_cable.append(index_cab+2)
                     elif 'CSA' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
                     elif 'CAD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
                     elif 'CDD' in str(CHAINE[index_cab+2]):
+                        index_cable.append(index_cab+2)
+                    elif 'CBD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
 
                 for ic in index_cable:
