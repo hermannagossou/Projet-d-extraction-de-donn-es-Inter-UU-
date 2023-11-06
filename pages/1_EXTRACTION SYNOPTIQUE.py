@@ -81,13 +81,13 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES BPE
 
-                BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPE-V|^SI[0-9]{6}|^BPEV_',na=False)]
+                BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPED[0-9]|^BPE-V|^SI[0-9]{6}|^BPEV_',na=False)]
 
                 BPEU=BPEU.reset_index(drop=True)
 
                 #TRAITEMENT DES MODELES
 
-                MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
+                MODELE=CHAINE[CHAINE.str.contains('BPEU[0-9]|BPEA[0-9]|BPP[0-9]|^BPED[0-9]|BPI[0-9]|BPEI[0-9]|BPE-V|BPEV',na=False)]
 
                 for index_modele,value_modele in zip(MODELE.index,MODELE.values):
                     if index_modele+1 not in range(len(CHAINE)):
@@ -121,7 +121,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DE LA CAPACITE
 
-                CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+                CAPACITE=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|144 FO|144 Fo|144 fo|144FO|144Fo|144fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
                 for capacite in CAPACITE:
                   if '\n' in capacite:
@@ -133,7 +133,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES CABLES
 
-                CAB=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+                CAB=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|144 FO|144 Fo|144 fo|144FO|144Fo|144fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
                 for index_cab in CAB.index:
                     if index_cab+1 not in range(len(CHAINE)):
@@ -162,6 +162,8 @@ if uploaded_file is not None:
                         index_cable.append(index_cab+2)
                     elif 'CDD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
+                    elif 'CBD' in str(CHAINE[index_cab+2]):
+                        index_cable.append(index_cab+2)
 
                 for ic in index_cable:
                     if CHAINE[ic].startswith('\n'):
@@ -175,7 +177,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES LONGUEURS
 
-                LONG=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
+                LONG=CHAINE[CHAINE.str.contains('288 FO|288 Fo|288 fo|288FO|288Fo|288fo|144 FO|144 Fo|144 fo|144FO|144Fo|144fo|72 FO|72 Fo|72 fo|72FO|72Fo|72fo|36 FO|36 Fo|36 fo|36FO|36Fo|36fo|24 FO|24 Fo|24 fo|24FO|24Fo|24fo',na=False)]
 
                 for index_capa in LONG.index:
                     index_long.append(index_capa-1)
