@@ -115,7 +115,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES SUPPORTS
 
-                SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|POL|ATC_|OPT_',na=False)]
+                SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|HIV_|POL_|ATC_|OPT_',na=False)]
                 SUPPORTS=SUPPORTS.reset_index(drop=True)
 
 
