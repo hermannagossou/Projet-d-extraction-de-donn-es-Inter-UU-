@@ -68,6 +68,8 @@ if uploaded_file is not None:
                         EPISSURE.append(CHAINE[index_epi])
                     elif str(CHAINE[index_epi+1]).startswith('OPE'):
                         EPISSURE.append(CHAINE[index_epi])
+                    elif str(CHAINE[index_epi+1]).startswith('POLXXX'):
+                        EPISSURE.append(CHAINE[index_epi])
                     elif str(CHAINE[index_epi+1]).startswith('COL'):
                         EPISSURE.append(CHAINE[index_epi])
                     elif str(CHAINE[index_epi+1]).startswith('BPE'):
@@ -115,7 +117,7 @@ if uploaded_file is not None:
 
                 #TRAITEMENT DES SUPPORTS
 
-                SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|HIV_|POL_|ATC_|OPT_',na=False)]
+                SUPPORTS=CHAINE[CHAINE.str.contains('ORF_|BYT_|NXL_|COL_|OPE_|NEX_|HIV_|POL_|ATC_|OPT_|POLX',na=False)]
                 SUPPORTS=SUPPORTS.reset_index(drop=True)
 
 
