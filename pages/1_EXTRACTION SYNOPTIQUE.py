@@ -168,6 +168,8 @@ if uploaded_file is not None:
                         index_cable.append(index_cab+2)
                     elif 'CBD' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
+                    elif 'CDB' in str(CHAINE[index_cab+2]):
+                        index_cable.append(index_cab+2)
 
                 for ic in index_cable:
                     if CHAINE[ic].startswith('\n'):
