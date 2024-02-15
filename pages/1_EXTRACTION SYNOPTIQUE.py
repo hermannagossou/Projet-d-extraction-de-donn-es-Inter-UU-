@@ -154,6 +154,8 @@ if uploaded_file is not None:
                         index_cable.append(index_cab+1)
                     elif 'CBD' in str(CHAINE[index_cab+1]):
                         index_cable.append(index_cab+1)
+                    elif 'CDB' in str(CHAINE[index_cab+2]):
+                        index_cable.append(index_cab+1)
                     elif 'CIU' in str(CHAINE[index_cab+2]):
                         index_cable.append(index_cab+2)
                     elif 'CDP' in str(CHAINE[index_cab+2]):
