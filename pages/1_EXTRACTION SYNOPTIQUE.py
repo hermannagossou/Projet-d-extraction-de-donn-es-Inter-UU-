@@ -239,15 +239,13 @@ if uploaded_file is not None:
                 df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
                 df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
-                #st.subheader(index_df)
-                #st.write(df_out)
-                #csv=convert_df(df_out)
+                st.subheader(index_df)
+                st.write(df_out)
+                csv=convert_df(df_out)
 
-                #st.download_button(
-                #    label='Télécharger',
-                #    data=csv,
-                #    file_name=index_df+'_out.csv',
-                #    mime='text/csv'
-
-                st.write(CHAINE)
-                                )
+                st.download_button(
+                    label='Télécharger',
+                    data=csv,
+                    file_name=index_df+'_out.csv',
+                    mime='text/csv'
+            )
