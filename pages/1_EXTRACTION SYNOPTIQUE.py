@@ -248,4 +248,6 @@ if uploaded_file is not None:
                     data=csv,
                     file_name=index_df+'_out.csv',
                     mime='text/csv'
-                )
+
+                st.write(CHAINE)
+                                )
