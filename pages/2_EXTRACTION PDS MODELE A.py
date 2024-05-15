@@ -70,7 +70,7 @@ if uploaded_file is not None:
                     STATUT.append('PASSAGE')
         
             # Récupération Champ Cable
-            CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CIC',na=False)]
+            CABLE_CHAINE=PDS[PDS.str.contains('CIU|CDP|CIC|CAD|CSA',na=False)]
             for cable in CABLE_CHAINE:
                 CABLE.append(cable.strip())
     
