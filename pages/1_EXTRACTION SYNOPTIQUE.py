@@ -104,6 +104,10 @@ if uploaded_file is not None:
                         MODELE_FINAL.append(CHAINE[index_modele+1].strip())
                     elif 'Taille 0' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1].strip())
+                    elif 'TAILLE 1' in str(CHAINE[index_modele+1]):
+                        MODELE_FINAL.append(CHAINE[index_modele+1].strip())
+                    elif 'Taille 1' in str(CHAINE[index_modele+1]):
+                        MODELE_FINAL.append(CHAINE[index_modele+1].strip())
                     elif 'PEO' in str(CHAINE[index_modele+1]):
                         MODELE_FINAL.append(CHAINE[index_modele+1].strip())
                     elif 'FDP' in str(CHAINE[index_modele+1]):
