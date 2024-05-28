@@ -41,7 +41,7 @@ if uploaded_file is not None:
 
                 ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
                 for index_adresse,adresse in enumerate(ADRESSE):
-                    st.write(index_adresse)
+                    st.write(CHAINE[index_adresse])
                     if str(adresse).startswith('RTSK'):
                         continue
                     elif str(adresse).startswith('SI'):
