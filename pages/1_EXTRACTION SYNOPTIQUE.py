@@ -51,7 +51,6 @@ if uploaded_file is not None:
                         ADRESSE_FINAL.append(adresse.split('\n')[0]+adresse.split('\n')[1])
                     else:
                         ADRESSE_FINAL.append(adresse)
-                        print(index_adresse)
 
 
                 ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
