@@ -41,7 +41,6 @@ if uploaded_file is not None:
 
                 ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
                 for index_adresse,adresse in enumerate(ADRESSE):
-                    st.write(CHAINE[index_adresse])
                     if str(adresse).startswith('RTSK'):
                         continue
                     elif str(adresse).startswith('SI'):
@@ -252,7 +251,7 @@ if uploaded_file is not None:
                 df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
                 st.subheader(index_df)
-                #st.write(df_out)
+                st.write(df_out)
                 csv=convert_df(df_out)
 
                 st.download_button(
