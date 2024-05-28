@@ -27,6 +27,7 @@ if uploaded_file is not None:
                 ADRESSE_FINAL=[]
                 CAPACITE_FINAL=[]
                 EPISSURE=[]
+                BOITE=[]
                 LONGUEUR=[]
                 CABLE=[]
                 MODELE_FINAL=[]
@@ -89,9 +90,9 @@ if uploaded_file is not None:
                     if str(CHAINE[index_bpe+1]).startswith('SI'):
                         continue
                     else:
-                        BPEU.append(CHAINE[index_bpe])
+                        BOITE.append(CHAINE[index_bpe])
 
-                BPEU=BPEU.reset_index(drop=True)
+                #BPEU=BPEU.reset_index(drop=True)
 
                 #TRAITEMENT DES MODELES
 
@@ -246,7 +247,7 @@ if uploaded_file is not None:
                 REFCOM=pd.Series(REFCOM2)
                 
 
-                df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BPEU,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
+                df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BOITE,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
                 df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
                 st.subheader(index_df)
