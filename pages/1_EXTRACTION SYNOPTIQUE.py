@@ -257,6 +257,6 @@ if uploaded_file is not None:
                 st.download_button(
                     label='Télécharger',
                     data=csv,
-                    file_name='Syno_'+index_df+'.csv',
+                    file_name='extract_'+index_df+'.csv',
                     mime='text/csv'
             )
