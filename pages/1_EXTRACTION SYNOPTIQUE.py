@@ -41,7 +41,6 @@ if uploaded_file is not None:
 
                 ADRESSE=CHAINE[CHAINE.str.contains('[0-9]{5}\s+[A-Za-zÉÈéè-]+',na=False)]
                 for index_adresse,adresse in enumerate(ADRESSE):
-                    st.write(CHAINE[index_adresse-2])
                     if str(adresse).startswith('RTSK'):
                         continue
                     elif str(adresse).startswith('SI'):
@@ -52,6 +51,7 @@ if uploaded_file is not None:
                         ADRESSE_FINAL.append(adresse.split('\n')[0]+adresse.split('\n')[1])
                     else:
                         ADRESSE_FINAL.append(adresse)
+                    st.write(CHAINE[index_adresse-2])
 
                 ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
 
