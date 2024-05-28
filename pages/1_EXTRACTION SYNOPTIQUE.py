@@ -246,7 +246,7 @@ if uploaded_file is not None:
 
                 REFCOM=pd.Series(REFCOM2)
 
-                df.write(BOITE)
+                st.write(BOITE)
                 
 
                 #df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BOITE,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
