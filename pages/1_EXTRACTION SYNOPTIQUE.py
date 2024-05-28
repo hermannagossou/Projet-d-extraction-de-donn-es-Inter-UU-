@@ -87,7 +87,7 @@ if uploaded_file is not None:
                 BPEU=CHAINE[CHAINE.str.contains('^BPEU[0-9]|^BPEA[0-9]|^BPP[0-9]|^BPI[0-9]|^BPEI[0-9]|^BPED[0-9]|^BPE-V|^SI[0-9]{6}|^BPEV_',na=False)]
 
                 for index_bpe in BPEU.index:
-                    if str(CHAINE[index_bpe+1]).startswith('SI'):
+                    if str(CHAINE[index_bpe]).startswith('SI'):
                         continue
                     else:
                         BOITE.append(CHAINE[index_bpe])
