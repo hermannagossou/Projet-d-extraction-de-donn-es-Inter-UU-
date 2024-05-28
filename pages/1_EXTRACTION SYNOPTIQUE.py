@@ -245,18 +245,20 @@ if uploaded_file is not None:
                     REFCOM2.append(' ')
 
                 REFCOM=pd.Series(REFCOM2)
+
+                df.write(BOITE)
                 
 
-                df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BOITE,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
-                df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
+                #df_out=pd.concat([CABLE,CAPACITE_FINAL,LONGUEUR,BOITE,EPISSURE,MODELE_FINAL,SUPPORTS,ADRESSE_FINAL,REFCOM],axis=1)
+                #df_out=df_out.rename(columns={0:'CABLE',1:'CAPACITE',2:'LONGUEUR',3:'BPEU',4:'EPISSURE',5:'MODELE',6:'SUPPORT',7:'ADRESSE',8:'REF COMMANDE'})
 
-                st.subheader(index_df)
-                st.write(df_out)
-                csv=convert_df(df_out)
+                #st.subheader(index_df)
+                #st.write(df_out)
+                #csv=convert_df(df_out)
 
-                st.download_button(
-                    label='Télécharger',
-                    data=csv,
-                    file_name='Syno_'+index_df+'.csv',
-                    mime='text/csv'
+                #st.download_button(
+                    #label='Télécharger',
+                    #data=csv,
+                    #file_name='Syno_'+index_df+'.csv',
+                    #mime='text/csv'
             )
