@@ -257,8 +257,8 @@ if uploaded_file is not None:
                 csv=convert_df(df_out)
 
                 st.download_button(
-                    #label='Télécharger',
-                    #data=csv,
-                    #file_name='Syno_'+index_df+'.csv',
-                    #mime='text/csv'
+                    label='Télécharger',
+                    data=csv,
+                    file_name='Syno_'+index_df+'.csv',
+                    mime='text/csv'
             )
