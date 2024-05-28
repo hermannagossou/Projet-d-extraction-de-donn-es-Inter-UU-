@@ -51,7 +51,7 @@ if uploaded_file is not None:
                         ADRESSE_FINAL.append(adresse.split('\n')[0]+adresse.split('\n')[1])
                     else:
                         ADRESSE_FINAL.append(adresse)
-                    st.write(CHAINE[index_adresse-2])
+                        st.write(CHAINE[index_adresse-2])
 
                 ADRESSE_FINAL=pd.Series(ADRESSE_FINAL)
 
