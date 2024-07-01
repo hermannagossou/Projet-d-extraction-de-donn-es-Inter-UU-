@@ -55,7 +55,7 @@ if uploaded_file is not None:
                     CHAMBRE.append(PDS[index_chambre+1])
         
             # Récupération Champ Type BPE
-            TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$',na=False)]
+            TYPE_CHAINE=PDS[PDS.str.contains('HD\s*$|FR6\s*$|Taille 1\s*$|Taille 0\s*$',na=False)]
             for type in TYPE_CHAINE:
                 TYPE.append(type.strip())
         
