@@ -36,7 +36,7 @@ if uploaded_file is not None:
                   ELEMENT.append(PDS[index_element+1])
             
             #Récupération du champ BPE
-            BPE.append(PDS[PDS.str.contains('^BD[0-9]|BPEU[0-9]|BPEA[0-9]|BPEI[0-9]|BPI[0-9]|BPP[0-9]',na=False)].iloc[0])
+            BPE.append(PDS[PDS.str.contains('^BD[0-9]{6}|BPEU[0-9]|BPEA[0-9]|BPEI[0-9]|BPI[0-9]|BPP[0-9]',na=False)].iloc[0])
         
             # Récupération Champ Adresse
             for index_adresse, adresse in enumerate(PDS):
